@@ -5,8 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
-        Title="ohyeah" Height="450" Width="800">
+        Title="Main Window" Height="1050" Width="1400"
+        Icon="images/logo.ico" >
+    <Window.Background>
+        <ImageBrush ImageSource="images/interface.png"/>
+  
+    </Window.Background>
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="50" Foreground="White" > <Bold>Loading</Bold></TextBlock>
+        <TextBlock  Grid.Row="2" HorizontalAlignment="Center" FontSize="50" Foreground="White" Name="dots"></TextBlock>
     </Grid>
 </Window>

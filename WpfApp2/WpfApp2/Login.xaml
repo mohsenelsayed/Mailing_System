@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
-   Title="Loginxaml" Height="450" Width="800"
+   Title="Loginxaml" Height="450" Width="800"  Icon="images/logo.ico" 
         Background="Black">
     <StackPanel HorizontalAlignment="Left" Width="300">
         <TextBlock HorizontalAlignment="Center" FontSize="30" Margin="0 5">Sign in Form</TextBlock>
