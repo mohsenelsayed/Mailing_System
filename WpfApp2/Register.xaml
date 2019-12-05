@@ -1,0 +1,134 @@
+﻿<Window x:Class="WpfApp2.Register"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+        Title="Register" Height="1050" Width="1400"
+         Icon="images/logo.ico"
+        >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Background=" #8469f4">
+            <Grid>
+
+                <StackPanel>
+                    <Image Source="images/logo.png" ></Image>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="4*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Margin="0,0,-0.2,735.8" Grid.RowSpan="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Image Source="images/left logo.png" Grid.RowSpan="2"></Image>
+
+                    <TextBlock FontSize="30"  VerticalAlignment="Bottom" Grid.Column="1"><Bold> Welcome!</Bold></TextBlock>
+                    <TextBlock FontSize="18"  Grid.Column="1" Grid.Row="2"> <Bold>Register and join our family!</Bold></TextBlock>
+
+
+                </Grid>
+                <StackPanel Grid.Row="1" Margin="0,59,-0.2,0">
+                    <StackPanel Width="500">
+                        <StackPanel>
+                            <Label Margin="0 10">
+                                <AccessText FontWeight="Bold" Text="UserName :" Margin="5 0 0 0" VerticalAlignment="Center" FontSize="20" ></AccessText>
+                            </Label>
+                            <Border BorderBrush="Black" BorderThickness="0,0,0,3"   >
+                                <TextBox  Background="Transparent"  Foreground="Black"  BorderThickness="0" ></TextBox>
+                            </Border>
+                        </StackPanel>
+
+                        <StackPanel>
+                            <Label Margin="0 10">
+                                <AccessText FontWeight="Bold" Text="Phone :" Margin="5 0 0 0" VerticalAlignment="Center" FontSize="20" ></AccessText>
+                            </Label>
+                            <Border BorderBrush="Black" BorderThickness="0,0,0,3"   >
+                                <TextBox  Background="Transparent"  Foreground="Black"  BorderThickness="0" ></TextBox>
+                            </Border>
+                        </StackPanel>
+
+                        <StackPanel>
+                            <Label Margin="0 0">
+                                <AccessText FontWeight="Bold" Text="Email address :" Margin="5 0 0 0" VerticalAlignment="Center" FontSize="20" ></AccessText>
+                            </Label>
+                            <Border BorderBrush="Black" BorderThickness="0,0,0,3"   >
+                                <TextBox  Background="Transparent"  Foreground="Black"  BorderThickness="0" ></TextBox>
+                            </Border>
+                        </StackPanel>
+
+                        <StackPanel Margin="0 0">
+
+                            <Label Margin="0 20" >
+
+
+                                <AccessText FontWeight="Bold" Text="Password :" Margin="5 0 0 0" VerticalAlignment="Center" FontSize="20"></AccessText>
+
+                            </Label>
+
+                            <Border BorderBrush="Black" BorderThickness="0,0,0,3"    >
+                                <PasswordBox  Background="Transparent"  BorderThickness="0" Foreground="Black" ></PasswordBox>
+                            </Border>
+                        </StackPanel>
+
+                        <StackPanel Margin="0 0">
+
+                            <Label Margin="0 20" >
+
+
+                                <AccessText FontWeight="Bold" Text="Confirm Password :" Margin="5 0 0 0" VerticalAlignment="Center" FontSize="20"></AccessText>
+
+                            </Label>
+
+                            <Border BorderBrush="Black" BorderThickness="0,0,0,3"    >
+                                <PasswordBox  Background="Transparent"  BorderThickness="0" Foreground="Black" ></PasswordBox>
+                            </Border>
+                        </StackPanel>
+
+                        <StackPanel>
+                            <Label Margin="0 0">
+                                <AccessText FontWeight="Bold" Text="Age :" Margin="5 0 0 0" VerticalAlignment="Center" FontSize="20" ></AccessText>
+                            </Label>
+                            <Border BorderBrush="Black" BorderThickness="0,0,0,3"   >
+                                <TextBox  Background="Transparent"  Foreground="Black"  BorderThickness="0" ></TextBox>
+                            </Border>
+                        </StackPanel>
+
+                        <StackPanel Margin="0 0" >
+                            <Label FontWeight="Bold" FontSize="20">Gender</Label>
+                            <RadioButton>male</RadioButton>
+                            <RadioButton>female</RadioButton>
+                        </StackPanel>
+                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0 20">
+
+                            <Border Width="300" Height="50" BorderThickness="1" Background=" #8469f4" BorderBrush="#8469f4" CornerRadius="12,12,12,12" >
+                                <Button FontWeight="Bold" Margin="10 0" Background=" #8469f4" Foreground="White" FontSize="30">
+                                    Register
+                                </Button>
+                            </Border>
+
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+
+            </Grid>
+            
+        </StackPanel>
+    </Grid>
+</Window>
