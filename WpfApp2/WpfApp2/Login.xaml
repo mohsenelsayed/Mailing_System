@@ -1,0 +1,46 @@
+﻿<Window x:Class="WpfApp2.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+   Title="Loginxaml" Height="450" Width="800"  Icon="images/logo.ico" 
+        Background="Black">
+    <StackPanel HorizontalAlignment="Left" Width="300">
+        <TextBlock HorizontalAlignment="Center" FontSize="30" Margin="0 5">Sign in Form</TextBlock>
+        <StackPanel Margin="0 10">
+            <StackPanel>
+                <Border BorderBrush="White" BorderThickness="2" Margin="0 10" CornerRadius="8,8,8,8">
+                    <Label>
+                        <StackPanel Orientation="Horizontal">
+
+                            <AccessText Text="UserName :" Margin="5 0 0 0" VerticalAlignment="Center" FontSize="20" Foreground="White"></AccessText>
+                        </StackPanel>
+
+                    </Label>
+                </Border>
+                <Border BorderBrush="Black" BorderThickness="1" Background="WhiteSmoke" >
+                    <TextBox  Background="Transparent"  Foreground="Black" ></TextBox>
+                </Border>
+            </StackPanel>
+            <StackPanel Margin="0 10">
+                <Border BorderBrush="White" BorderThickness="2" Margin="0 10" CornerRadius="8,8,8,8">
+                    <Label>
+                        <StackPanel Orientation="Horizontal">
+
+                            <AccessText Text="Password :" Margin="5 0 0 0" VerticalAlignment="Center" FontSize="20" Foreground="White"></AccessText>
+                        </StackPanel>
+                    </Label>
+                </Border>
+                <Border BorderBrush="Black" BorderThickness="1" Background="WhiteSmoke">
+                    <PasswordBox  Background="Transparent"  Foreground="Black" ></PasswordBox>
+                </Border>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <Button Width="100" Height="25" Margin="10 0" Background="Green" Foreground="White">Login</Button>
+                <Button Width="100" Height="25" Background="Firebrick" Foreground="White">Reset</Button>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+</Window>
