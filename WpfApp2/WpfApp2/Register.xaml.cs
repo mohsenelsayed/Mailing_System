@@ -30,7 +30,7 @@ namespace WpfApp2
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True");
+            SqlConnection con = new SqlConnection("Data Source=MEDHAT;Initial Catalog=mailingsystem;Integrated Security=True");
             con.Open();
 
             SqlCommand cmd = new SqlCommand("login", con);
@@ -39,7 +39,7 @@ namespace WpfApp2
             cmd.Parameters.Add(new SqlParameter("@email", emailwpf.Text));
             cmd.Parameters.Add(new SqlParameter("@password", passwordwpf.Password));
             cmd.Parameters.Add(new SqlParameter("@username", usernamewpf.Text));
-            cmd.Parameters.Add(new SqlParameter("@age", agewpf.Text));
+            cmd.Parameters.Add(new SqlParameter("@age",Convert.ToInt32( agewpf.Text)));
             if (male.IsChecked == true)
                 cmd.Parameters.Add(new SqlParameter("@gender", "Male"));
             else
@@ -48,6 +48,7 @@ namespace WpfApp2
 
             cmd.ExecuteNonQuery();
             con.Close();
+            MessageBox.Show("data was inserted");
 
 
 
