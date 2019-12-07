@@ -45,7 +45,7 @@
                     <TextBlock FontSize="30"  VerticalAlignment="Bottom" Grid.Column="1"><Bold> Welcome!</Bold></TextBlock>
                     <TextBlock FontSize="20"  Grid.Column="1" Grid.Row="2"> <Bold>Register to join our family</Bold></TextBlock>
                 </Grid>
-                <StackPanel Grid.Row="1" Margin="0,0,-0.2,5.8">
+                <StackPanel Margin="-10,10,10,193" Grid.RowSpan="2">
                     <StackPanel Width="500">
                         <StackPanel>
                             <Label Margin="0 10">
@@ -98,7 +98,7 @@
                             </Label>
 
                             <Border BorderBrush="Black" BorderThickness="0,0,0,3"    >
-                                <PasswordBox  Name="wpf" Background="Transparent"  BorderThickness="0" Foreground="Black" ></PasswordBox>
+                                <PasswordBox  Name="confirmpasswpf" Background="Transparent"  BorderThickness="0" Foreground="Black" ></PasswordBox>
                             </Border>
                         </StackPanel>
 

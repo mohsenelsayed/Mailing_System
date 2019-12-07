@@ -29,8 +29,20 @@ namespace WpfApp2
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection con = new SqlConnection("Data Source=MEDHAT;Initial Catalog=mailingsystem;Integrated Security=True");
+            if (Emailwpf.Text == "")
+            {
+                MessageBox.Show("you didnt input your email");
+                return;
+            }
+            if (passwordwpf.Password == "")
+            {
+                MessageBox.Show("you didnt input your password");
+                return;
+            }
+
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True");
             con.Open();
+
 
             SqlCommand cmd = new SqlCommand("login", con);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -42,7 +54,19 @@ namespace WpfApp2
             if (count == 1)
                 MessageBox.Show("User Exists");
             else
-                MessageBox.Show("User DOES NOT Exists");
+            {
+                SqlCommand checkemail = new SqlCommand("check_email_is_in_the_system", con);
+                checkemail.CommandType = CommandType.StoredProcedure;
+
+                checkemail.Parameters.Add(new SqlParameter("@email", Emailwpf.Text));
+
+                int emailcount = Convert.ToInt32(checkemail.ExecuteScalar());
+
+                if (emailcount == 1)
+                    MessageBox.Show("Wrong Password Entered");
+                else
+                    MessageBox.Show("This email doesnt exist");
+            }
             con.Close();
 
 
