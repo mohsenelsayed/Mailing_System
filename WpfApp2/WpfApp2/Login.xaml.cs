@@ -18,38 +18,40 @@ using System.Configuration;
 namespace WpfApp2
 {
     /// <summary>
-    /// Interaction logic for Register.xaml
+    /// Interaction logic for Welcome.xaml
     /// </summary>
-    public partial class Register : Page
+    public partial class Login : Page
     {
-        public Register()
+        public Login()
         {
             InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
             SqlConnection con = new SqlConnection("Data Source=MEDHAT;Initial Catalog=mailingsystem;Integrated Security=True");
             con.Open();
+
             SqlCommand cmd = new SqlCommand("login", con);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add(new SqlParameter("@email", emailwpf.Text));
+
+            cmd.Parameters.Add(new SqlParameter("@email", Emailwpf.Text));
             cmd.Parameters.Add(new SqlParameter("@password", passwordwpf.Password));
-            cmd.Parameters.Add(new SqlParameter("@username", usernamewpf.Text));
-            cmd.Parameters.Add(new SqlParameter("@age",Convert.ToInt32( agewpf.Text)));
-            if (male.IsChecked == true)
-                cmd.Parameters.Add(new SqlParameter("@gender", "Male"));
+
+            int count = Convert.ToInt32(cmd.ExecuteScalar());
+            if (count == 1)
+                MessageBox.Show("User Exists");
             else
-                cmd.Parameters.Add(new SqlParameter("@gender", "Female"));
-            cmd.ExecuteNonQuery();
+                MessageBox.Show("User DOES NOT Exists");
             con.Close();
-            MessageBox.Show("data was inserted");
+
+
         }
 
-        private void back_welcome(object sender, RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Uri uri = new Uri("Login.xaml", UriKind.Relative);
+
+            Uri uri = new Uri("Register.xaml", UriKind.Relative);
             this.NavigationService.Navigate(uri);
         }
     }

@@ -25,34 +25,7 @@ namespace WpfApp2
         public Welcome()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            SqlConnection con = new SqlConnection("Data Source=MEDHAT;Initial Catalog=mailingsystem;Integrated Security=True");
-            con.Open();
-
-            SqlCommand cmd = new SqlCommand("login", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            cmd.Parameters.Add(new SqlParameter("@email", Emailwpf.Text));
-            cmd.Parameters.Add(new SqlParameter("@password", passwordwpf.Password));
-
-            int count = Convert.ToInt32(cmd.ExecuteScalar());
-            if (count == 1)
-                MessageBox.Show("User Exists");
-            else
-                MessageBox.Show("User DOES NOT Exists");
-            con.Close();
-
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            Register w = new Register();
-            w.Show();
-            Close();
+            welcome.Content = new Login();
         }
     }
 }
