@@ -25,6 +25,7 @@ namespace WpfApp2
         public Login()
         {
             InitializeComponent();
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -39,7 +40,7 @@ namespace WpfApp2
                 MessageBox.Show("you didnt input your password");
                 return;
             }
-
+            
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True");
             con.Open();
 
@@ -52,7 +53,13 @@ namespace WpfApp2
 
             int count = Convert.ToInt32(cmd.ExecuteScalar());
             if (count == 1)
-                MessageBox.Show("User Exists");
+            {
+                string x = Emailwpf.Text;
+
+                mails p = new mails(x);
+                this.NavigationService.Navigate(p);
+
+            }
             else
             {
                 SqlCommand checkemail = new SqlCommand("check_email_is_in_the_system", con);

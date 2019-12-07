@@ -137,3 +137,5 @@ D:\Uni\2nd Year\IS\Project\New folder\Mailing_System\WpfApp2\WpfApp2\obj\Debug\L
 D:\Uni\2nd Year\IS\Project\New folder\Mailing_System\WpfApp2\WpfApp2\obj\Debug\Login.baml
 D:\Uni\2nd Year\IS\Project\New folder\Mailing_System\WpfApp2\WpfApp2\obj\Debug\App.baml
 C:\Users\RayXerxes\Desktop\gitt\Mailing_System\WpfApp2\WpfApp2\obj\Debug\App.baml
+C:\Users\RayXerxes\Desktop\gitt\Mailing_System\WpfApp2\WpfApp2\obj\Debug\mails.g.cs
+C:\Users\RayXerxes\Desktop\gitt\Mailing_System\WpfApp2\WpfApp2\obj\Debug\mails.baml
