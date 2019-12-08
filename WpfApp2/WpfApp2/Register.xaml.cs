@@ -80,7 +80,7 @@ namespace WpfApp2
 
             }
 
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True");
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-I9CKISJ;Initial Catalog=mailingsystem;Integrated Security=True");
             con.Open();
 
             SqlCommand checkemail = new SqlCommand("check_email_is_in_the_system", con);
@@ -178,7 +178,8 @@ namespace WpfApp2
             con.Close();
             MessageBox.Show("New Data inserted");
 
-
+            Uri uri = new Uri("Login.xaml", UriKind.Relative);
+            this.NavigationService.Navigate(uri);
 
 
         }

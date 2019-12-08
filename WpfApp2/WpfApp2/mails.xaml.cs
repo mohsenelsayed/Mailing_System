@@ -32,7 +32,7 @@ namespace WpfApp2
 
 
 
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True");
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-I9CKISJ;Initial Catalog=mailingsystem;Integrated Security=True");
             con.Open();
 
 

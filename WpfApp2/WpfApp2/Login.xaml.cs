@@ -40,8 +40,8 @@ namespace WpfApp2
                 MessageBox.Show("you didnt input your password");
                 return;
             }
-            
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True");
+
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-I9CKISJ;Initial Catalog=mailingsystem;Integrated Security=True");
             con.Open();
 
 
@@ -55,9 +55,11 @@ namespace WpfApp2
             if (count == 1)
             {
                 string x = Emailwpf.Text;
-
-                mails p = new mails(x);
-                this.NavigationService.Navigate(p);
+                MailsHome mh = new MailsHome();
+                var w = Window.GetWindow(this);
+                mh.Show();
+                w.Close();
+                mh.mail.Content = new mails(x);
 
             }
             else
