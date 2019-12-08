@@ -14,10 +14,14 @@
         <StackPanel Width="auto">
             <Button Click="Button_New">New Message</Button>
             <Button Click="Button_inbox">Inbox</Button>
-            <Button>Drafts</Button>
+            <Button>Spam</Button>
             <Button>Trash</Button>
-            <Button>Sent</Button>
+            <Button Click="Button_Sent">Sent</Button>
         </StackPanel>
-        <Frame Name="mail" Grid.Column="1" NavigationUIVisibility="Hidden" ></Frame>
+        <DataGrid Name="dg" Grid.Column="1" IsReadOnly="True">
+
+        </DataGrid>
+        <TextBlock Name="msgs" HorizontalAlignment="Left" Margin="219,101,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>

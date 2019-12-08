@@ -41,7 +41,7 @@ namespace WpfApp2
                 return;
             }
 
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-I9CKISJ;Initial Catalog=mailingsystem;Integrated Security=True");
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True");
             con.Open();
 
 
@@ -55,11 +55,10 @@ namespace WpfApp2
             if (count == 1)
             {
                 string x = Emailwpf.Text;
-                MailsHome mh = new MailsHome();
+                MailsHome mh = new MailsHome(x);
                 var w = Window.GetWindow(this);
                 mh.Show();
                 w.Close();
-                mh.mail.Content = new mails(x);
 
             }
             else

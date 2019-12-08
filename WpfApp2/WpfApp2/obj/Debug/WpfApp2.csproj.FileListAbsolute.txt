@@ -137,8 +137,6 @@ D:\Uni\2nd Year\IS\Project\New folder\Mailing_System\WpfApp2\WpfApp2\obj\Debug\L
 D:\Uni\2nd Year\IS\Project\New folder\Mailing_System\WpfApp2\WpfApp2\obj\Debug\Login.baml
 D:\Uni\2nd Year\IS\Project\New folder\Mailing_System\WpfApp2\WpfApp2\obj\Debug\App.baml
 C:\Users\RayXerxes\Desktop\gitt\Mailing_System\WpfApp2\WpfApp2\obj\Debug\App.baml
-C:\Users\RayXerxes\Desktop\gitt\Mailing_System\WpfApp2\WpfApp2\obj\Debug\mails.g.cs
-C:\Users\RayXerxes\Desktop\gitt\Mailing_System\WpfApp2\WpfApp2\obj\Debug\mails.baml
 D:\mail\Mailing_System\WpfApp2\WpfApp2\bin\Debug\WpfApp2.exe.config
 D:\mail\Mailing_System\WpfApp2\WpfApp2\bin\Debug\WpfApp2.exe
 D:\mail\Mailing_System\WpfApp2\WpfApp2\bin\Debug\WpfApp2.pdb
@@ -167,3 +165,7 @@ D:\mail\Mailing_System\WpfApp2\WpfApp2\obj\Debug\MailsHome.g.cs
 D:\mail\Mailing_System\WpfApp2\WpfApp2\obj\Debug\MailsHome.baml
 D:\mail\Mailing_System\WpfApp2\WpfApp2\obj\Debug\sendTo.g.cs
 D:\mail\Mailing_System\WpfApp2\WpfApp2\obj\Debug\sendTo.baml
+C:\Users\RayXerxes\Desktop\gitt\Mailing_System\WpfApp2\WpfApp2\obj\Debug\MailsHome.g.cs
+C:\Users\RayXerxes\Desktop\gitt\Mailing_System\WpfApp2\WpfApp2\obj\Debug\sendTo.g.cs
+C:\Users\RayXerxes\Desktop\gitt\Mailing_System\WpfApp2\WpfApp2\obj\Debug\MailsHome.baml
+C:\Users\RayXerxes\Desktop\gitt\Mailing_System\WpfApp2\WpfApp2\obj\Debug\sendTo.baml

@@ -58,9 +58,6 @@
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="mails.xaml.cs">
-      <DependentUpon>mails.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MailsHome.xaml.cs">
       <DependentUpon>MailsHome.xaml</DependentUpon>
     </Compile>
@@ -74,10 +71,6 @@
       <DependentUpon>Welcome.xaml</DependentUpon>
     </Compile>
     <Page Include="Login.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="mails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
