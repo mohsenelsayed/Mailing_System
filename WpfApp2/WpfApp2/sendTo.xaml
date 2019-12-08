@@ -4,19 +4,22 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2"
+          Closing="Sendwindow_Closing"  
+
         mc:Ignorable="d"
         Title="New Massege" Height="400" Width="450">
+
     <StackPanel Margin="0 12">
         <TextBlock Background="Black" Foreground="White" FontWeight="Bold">New Massege</TextBlock>
         <StackPanel Orientation="Horizontal">
             <TextBlock Margin="0 0 20 0 ">To</TextBlock>
-            <TextBox Width="400"></TextBox>
+            <TextBox Name="towpf" Width="400"></TextBox>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <TextBlock Margin="0 0 18 0">Subject</TextBlock>
-            <TextBox Width="375"></TextBox>
+            <TextBox Name="subjectwpf" Width="375"></TextBox>
         </StackPanel>
-        <TextBox AcceptsReturn="True" TextWrapping="Wrap" Height="250"/>
-        <Button HorizontalAlignment="Left" Margin="30 10" Width="100">Send</Button>
+        <TextBox Name="descwpf" AcceptsReturn="True" TextWrapping="Wrap" Height="250"/>
+        <Button HorizontalAlignment="Left" Margin="30 10" Width="100" Click="Button_sendmsg">Send</Button>
     </StackPanel>
 </Window>

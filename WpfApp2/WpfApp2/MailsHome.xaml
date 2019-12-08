@@ -14,14 +14,14 @@
         <StackPanel Width="auto">
             <Button Click="Button_New">New Message</Button>
             <Button Click="Button_inbox">Inbox</Button>
-            <Button>Spam</Button>
-            <Button>Trash</Button>
+            <Button Click="Button_draft">Drafts</Button>
+            <Button Click="Button_spam">Spam</Button>
             <Button Click="Button_Sent">Sent</Button>
         </StackPanel>
         <DataGrid Name="dg" Grid.Column="1" IsReadOnly="True">
 
         </DataGrid>
-        <TextBlock Name="msgs" HorizontalAlignment="Left" Margin="219,101,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock Name="msgs" HorizontalAlignment="Left" Margin="193,101,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

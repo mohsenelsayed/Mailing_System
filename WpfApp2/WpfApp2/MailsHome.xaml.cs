@@ -22,6 +22,8 @@ namespace WpfApp2
     /// </summary>
     public partial class MailsHome : Window
     {
+        public string connec = "Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True";
+
         public string str;
         public MailsHome()
         {
@@ -36,7 +38,7 @@ namespace WpfApp2
 
 
 
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True");
+            SqlConnection con = new SqlConnection(connec);
             con.Open();
 
 
@@ -84,7 +86,7 @@ namespace WpfApp2
 
         private void Button_New(object sender, RoutedEventArgs e)
         {
-            sendTo st = new sendTo();
+            sendTo st = new sendTo(str);
             st.Show();
         }
         private void Button_inbox(object sender, RoutedEventArgs e)
@@ -92,7 +94,7 @@ namespace WpfApp2
 
 
 
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True");
+            SqlConnection con = new SqlConnection(connec);
             con.Open();
 
 
@@ -139,7 +141,7 @@ namespace WpfApp2
 
         private void Button_Sent(object sender, RoutedEventArgs e)
         {
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True");
+            SqlConnection con = new SqlConnection(connec);
             con.Open();
 
 
@@ -182,6 +184,102 @@ namespace WpfApp2
 
 
             con.Close();
+        }
+
+        private void Button_draft(object sender, RoutedEventArgs e)
+        {
+            SqlConnection con = new SqlConnection(connec);
+            con.Open();
+
+
+
+            SqlCommand num = new SqlCommand("msgdraftnum", con);
+            num.CommandType = CommandType.StoredProcedure;
+            num.Parameters.Add(new SqlParameter("@email", str));
+            int count = Convert.ToInt32(num.ExecuteScalar());
+            msgs.Text = "messages number is " + count;
+
+
+            SqlCommand cmd = new SqlCommand("msgdraft", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@sender", str));
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            DataTable tbl_mail = new DataTable();
+            tbl_mail.Columns.Add("To");
+            tbl_mail.Columns.Add("Subject");
+            tbl_mail.Columns.Add("Date");
+
+            DataRow row;
+            while (reader.Read())
+            {
+                row = tbl_mail.NewRow();
+                row["To"] = reader["Username"];
+                row["Subject"] = reader["Subject"];
+                row["Date"] = reader["msgdate"];
+
+                tbl_mail.Rows.Add(row);
+
+
+            }
+
+            dg.ItemsSource = tbl_mail.DefaultView;
+
+
+            reader.Close();
+
+
+            con.Close();
+        }
+
+        private void Button_spam(object sender, RoutedEventArgs e)
+        {
+
+            SqlConnection con = new SqlConnection(connec);
+            con.Open();
+
+
+            SqlCommand num = new SqlCommand("msgspamnum", con);
+            num.CommandType = CommandType.StoredProcedure;
+            num.Parameters.Add(new SqlParameter("@email", str));
+            int count = Convert.ToInt32(num.ExecuteScalar());
+            msgs.Text = "messages number is " + count;
+
+
+
+
+            SqlCommand cmd = new SqlCommand("msgspam", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@email", str));
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            DataTable tbl_mail = new DataTable();
+            tbl_mail.Columns.Add("From");
+            tbl_mail.Columns.Add("Subject");
+            tbl_mail.Columns.Add("Date");
+
+            DataRow row;
+            while (reader.Read())
+            {
+                row = tbl_mail.NewRow();
+                row["From"] = reader["Username"];
+                row["Subject"] = reader["Subject"];
+                row["Date"] = reader["msgdate"];
+
+                tbl_mail.Rows.Add(row);
+
+
+            }
+
+            dg.ItemsSource = tbl_mail.DefaultView;
+
+
+            reader.Close();
+
+
+            con.Close();
+
+
         }
     }
 }

@@ -22,6 +22,7 @@ namespace WpfApp2
     /// </summary>
     public partial class Login : Page
     {
+        public string connec = "Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True";
         public Login()
         {
             InitializeComponent();
@@ -41,7 +42,7 @@ namespace WpfApp2
                 return;
             }
 
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True");
+            SqlConnection con = new SqlConnection(connec);
             con.Open();
 
 

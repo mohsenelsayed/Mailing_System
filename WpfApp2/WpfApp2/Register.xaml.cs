@@ -24,6 +24,8 @@ namespace WpfApp2
     /// </summary>
     public partial class Register : Page
     {
+        public string connec = "Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True";
+
         public Register()
         {
             InitializeComponent();
@@ -80,7 +82,7 @@ namespace WpfApp2
 
             }
 
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True");
+            SqlConnection con = new SqlConnection(connec);
             con.Open();
 
             SqlCommand checkemail = new SqlCommand("check_email_is_in_the_system", con);
