@@ -24,5 +24,11 @@ namespace WpfApp2
             InitializeComponent();
       
         }
+
+        private void Button_New(object sender, RoutedEventArgs e)
+        {
+            sendTo st = new sendTo();
+            st.Show();
+        }
     }
 }

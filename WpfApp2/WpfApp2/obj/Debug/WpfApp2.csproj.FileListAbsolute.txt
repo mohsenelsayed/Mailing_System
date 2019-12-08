@@ -165,5 +165,5 @@ D:\mail\Mailing_System\WpfApp2\WpfApp2\obj\Debug\WpfApp2.exe
 D:\mail\Mailing_System\WpfApp2\WpfApp2\obj\Debug\WpfApp2.pdb
 D:\mail\Mailing_System\WpfApp2\WpfApp2\obj\Debug\MailsHome.g.cs
 D:\mail\Mailing_System\WpfApp2\WpfApp2\obj\Debug\MailsHome.baml
-D:\mail\Mailing_System\WpfApp2\WpfApp2\obj\Debug\Buttons.g.cs
-D:\mail\Mailing_System\WpfApp2\WpfApp2\obj\Debug\Buttons.baml
+D:\mail\Mailing_System\WpfApp2\WpfApp2\obj\Debug\sendTo.g.cs
+D:\mail\Mailing_System\WpfApp2\WpfApp2\obj\Debug\sendTo.baml

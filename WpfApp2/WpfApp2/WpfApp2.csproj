@@ -64,11 +64,11 @@
     <Compile Include="MailsHome.xaml.cs">
       <DependentUpon>MailsHome.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Buttons.xaml.cs">
-      <DependentUpon>Buttons.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="sendTo.xaml.cs">
+      <DependentUpon>sendTo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Welcome.xaml.cs">
       <DependentUpon>Welcome.xaml</DependentUpon>
@@ -97,11 +97,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Buttons.xaml">
+    <Page Include="Register.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Register.xaml">
+    <Page Include="sendTo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

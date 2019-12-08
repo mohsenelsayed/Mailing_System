@@ -11,8 +11,9 @@
             <ColumnDefinition Width="1*"></ColumnDefinition>
             <ColumnDefinition Width="4*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <StackPanel Width="100">
-            <Button >Inbox</Button>
+        <StackPanel Width="auto">
+            <Button Click="Button_New">New Message</Button>
+            <Button>Inbox</Button>
             <Button>Drafts</Button>
             <Button>Trash</Button>
             <Button>Sent</Button>
