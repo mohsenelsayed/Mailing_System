@@ -30,5 +30,10 @@ namespace WpfApp2
             sendTo st = new sendTo();
             st.Show();
         }
+
+        private void Button_inbox(object sender, RoutedEventArgs e)
+        {
+            mail.Content = new mails();
+        }
     }
 }

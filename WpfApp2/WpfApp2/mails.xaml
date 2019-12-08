@@ -9,7 +9,9 @@
       Title="mails">
 
     <Grid>
-        <DataGrid Name="dg"/>
+        <DataGrid Name="dg"  IsReadOnly="True">
+            
+        </DataGrid>
         <TextBlock Name="msgs" HorizontalAlignment="Left" Margin="150,83,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
 
     </Grid>

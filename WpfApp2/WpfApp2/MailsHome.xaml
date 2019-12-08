@@ -13,11 +13,11 @@
         </Grid.ColumnDefinitions>
         <StackPanel Width="auto">
             <Button Click="Button_New">New Message</Button>
-            <Button>Inbox</Button>
+            <Button Click="Button_inbox">Inbox</Button>
             <Button>Drafts</Button>
             <Button>Trash</Button>
             <Button>Sent</Button>
         </StackPanel>
-        <Frame Name="mail" Grid.Column="1" ></Frame>
+        <Frame Name="mail" Grid.Column="1" NavigationUIVisibility="Hidden" ></Frame>
     </Grid>
 </Window>
