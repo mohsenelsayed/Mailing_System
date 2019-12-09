@@ -22,13 +22,13 @@ namespace WpfApp2
     /// </summary>
     public partial class MailsHome : Window
     {
-        public string connec = "Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True";
+        public string connec = "Data Source=DESKTOP-I9CKISJ;Initial Catalog=mailingsystem;Integrated Security=True";
 
         public string str;
         public MailsHome()
         {
             InitializeComponent();
-      
+
         }
         public MailsHome(string val)
         {
@@ -280,6 +280,13 @@ namespace WpfApp2
             con.Close();
 
 
+        }
+
+        private void Button_logOut(object sender, RoutedEventArgs e)
+        {
+            Welcome w = new Welcome();
+            w.Show();
+            Close();
         }
     }
 }

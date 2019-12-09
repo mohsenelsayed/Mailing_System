@@ -20,6 +20,10 @@
             <TextBox Name="subjectwpf" Width="375"></TextBox>
         </StackPanel>
         <TextBox Name="descwpf" AcceptsReturn="True" TextWrapping="Wrap" Height="250"/>
-        <Button HorizontalAlignment="Left" Margin="30 10" Width="100" Click="Button_sendmsg">Send</Button>
+        <StackPanel Orientation="Horizontal">
+            
+            <Button HorizontalAlignment="Left" Margin="30 10" Width="100" Click="Button_sendmsg">Send</Button>
+            <Button HorizontalAlignment="Right" Margin="120 10 0 10" Width="100" Click="Button_discard">Discard</Button>
+        </StackPanel>
     </StackPanel>
 </Window>
