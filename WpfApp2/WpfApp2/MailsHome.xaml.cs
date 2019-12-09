@@ -22,7 +22,8 @@ namespace WpfApp2
     /// </summary>
     public partial class MailsHome : Window
     {
-        public string connec = "Data Source=DESKTOP-I9CKISJ;Initial Catalog=mailingsystem;Integrated Security=True";
+
+        public string connec = "Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True";
 
         public string str;
         public MailsHome()
@@ -33,13 +34,23 @@ namespace WpfApp2
         public MailsHome(string val)
         {
             InitializeComponent();
+     
 
             str = val;
 
-
+            
 
             SqlConnection con = new SqlConnection(connec);
             con.Open();
+
+            SqlCommand showuser = new SqlCommand("showusername", con);
+            showuser.CommandType = CommandType.StoredProcedure;
+            showuser.Parameters.Add(new SqlParameter("@email", str));
+            SqlDataReader userreader = showuser.ExecuteReader();
+            while (userreader.Read())
+                usernamewpf.Text = "Welcome back , "+(userreader["username"].ToString());;
+            userreader.Close();
+
 
 
             SqlCommand num = new SqlCommand("msgnum", con);
@@ -47,7 +58,6 @@ namespace WpfApp2
             num.Parameters.Add(new SqlParameter("@email", str));
             int count = Convert.ToInt32(num.ExecuteScalar());
             msgs.Text = "messages number is " + count;
-
 
 
 
@@ -91,7 +101,7 @@ namespace WpfApp2
         }
         private void Button_inbox(object sender, RoutedEventArgs e)
         {
-
+                
 
 
             SqlConnection con = new SqlConnection(connec);
@@ -106,7 +116,7 @@ namespace WpfApp2
 
 
 
-
+            
             SqlCommand cmd = new SqlCommand("msgpro", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@theloggedemail", str));
@@ -188,11 +198,12 @@ namespace WpfApp2
 
         private void Button_draft(object sender, RoutedEventArgs e)
         {
+           
             SqlConnection con = new SqlConnection(connec);
             con.Open();
 
 
-
+            
             SqlCommand num = new SqlCommand("msgdraftnum", con);
             num.CommandType = CommandType.StoredProcedure;
             num.Parameters.Add(new SqlParameter("@email", str));
@@ -287,6 +298,7 @@ namespace WpfApp2
             Welcome w = new Welcome();
             w.Show();
             Close();
+            
         }
     }
 }

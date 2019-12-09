@@ -24,7 +24,7 @@ namespace WpfApp2
     /// </summary>
     public partial class sendTo : Window
     {
-        public string connec = "Data Source=DESKTOP-I9CKISJ;Initial Catalog=mailingsystem;Integrated Security=True";
+        public string connec = "Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True";
         public string str;
         public sendTo(String val)
         {
@@ -91,7 +91,7 @@ namespace WpfApp2
                 cmd.Parameters.Add(new SqlParameter("@description", descwpf.Text));
                 cmd.Parameters.Add(new SqlParameter("@toemail", towpf.Text));
                 cmd.Parameters.Add(new SqlParameter("@fromemail", str));
-                cmd.Parameters.Add(new SqlParameter("@folder", "drafts"));
+                cmd.Parameters.Add(new SqlParameter("@folder", "draft"));
 
 
                 cmd.ExecuteNonQuery();

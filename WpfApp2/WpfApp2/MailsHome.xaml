@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2"
+        
         mc:Ignorable="d"
         Title="MailsHome" Height="1050" Width="1400">
     <Grid>
@@ -16,8 +17,8 @@
             <RowDefinition Height="11*"></RowDefinition>
         </Grid.RowDefinitions>
         <DockPanel Grid.ColumnSpan="2" Margin="10 20">
-            <TextBlock>User name</TextBlock>
-            <Button Height="30" Width="100" VerticalAlignment="Top" Click="Button_logOut"> Log Out</Button>
+            <TextBlock Name="usernamewpf">User name</TextBlock>
+            <Button Height="30" Width="100" VerticalAlignment="Top" Click="Button_logOut">Log Out</Button>
         </DockPanel>
         <StackPanel Width="auto" Grid.Row="1">
             <Button Click="Button_New">New Message</Button>
@@ -28,7 +29,7 @@
         </StackPanel>
         <DataGrid Name="dg" Grid.Column="1" Grid.Row="1" ColumnWidth="150"  CanUserResizeColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-                
+
             </DataGrid.Columns>
             <DataGrid.RowDetailsTemplate>
                 <DataTemplate>
@@ -43,18 +44,22 @@
                                 <RowDefinition Height="auto"></RowDefinition>
                                 <RowDefinition Height="auto"></RowDefinition>
                             </Grid.RowDefinitions>
-                            <TextBlock Text="From : " FontWeight="Bold" ></TextBlock>
-                            <TextBlock Text="{Binding Username }" Grid.Column="1" Grid.Row="0" ></TextBlock>
+                            <TextBlock Name="hey" Text="From : " FontWeight="Bold" ></TextBlock>
+                            <TextBlock Text="{Binding From }" Grid.Column="1" Grid.Row="0" ></TextBlock>
+
+                            <TextBlock Text="{Binding From }" Grid.Column="1" Grid.Row="0" ></TextBlock>
+                            <TextBlock Text="{Binding To }" Grid.Column="1" Grid.Row="0" ></TextBlock>
+
                             <TextBlock Text="Subject : " FontWeight="Bold" Grid.Column="0" Grid.Row="1" ></TextBlock>
                             <TextBlock Text="{Binding Subject }" Grid.Column="1" Grid.Row="1" ></TextBlock>
                             <TextBlock Text="Date : " FontWeight="Bold" Grid.Column="0" Grid.Row="2" ></TextBlock>
-                            <TextBlock Text="{Binding msgdate }" Grid.Column="1" Grid.Row="2" ></TextBlock>
+                            <TextBlock Text="{Binding Date }" Grid.Column="1" Grid.Row="2" ></TextBlock>
                         </Grid>
                     </DockPanel>
                 </DataTemplate>
             </DataGrid.RowDetailsTemplate>
         </DataGrid>
-        <TextBlock Name="msgs" HorizontalAlignment="Left" Margin="193,101,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock Name="msgs" HorizontalAlignment="Left" Margin="199,106,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.Row="1"/>
 
     </Grid>
 </Window>
