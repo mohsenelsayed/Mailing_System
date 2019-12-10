@@ -23,7 +23,7 @@ namespace WpfApp2
     public partial class MailsHome : Window
     {
 
-        public string connec = "Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True";
+        public string connec = "Data Source=DESKTOP-I9CKISJ;Initial Catalog=mailingsystem;Integrated Security=True";
 
         public string str;
         public MailsHome()
@@ -43,14 +43,14 @@ namespace WpfApp2
             SqlConnection con = new SqlConnection(connec);
             con.Open();
 
-            SqlCommand showuser = new SqlCommand("showusername", con);
+    /*        SqlCommand showuser = new SqlCommand("showusername", con);
             showuser.CommandType = CommandType.StoredProcedure;
             showuser.Parameters.Add(new SqlParameter("@email", str));
             SqlDataReader userreader = showuser.ExecuteReader();
             while (userreader.Read())
                 usernamewpf.Text = "Welcome back , "+(userreader["username"].ToString());;
             userreader.Close();
-
+            */
 
 
             SqlCommand num = new SqlCommand("msgnum", con);
@@ -64,32 +64,40 @@ namespace WpfApp2
             SqlCommand cmd = new SqlCommand("msgpro", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@theloggedemail", str));
-            SqlDataReader reader = cmd.ExecuteReader();
 
-            DataTable tbl_mail = new DataTable();
-            tbl_mail.Columns.Add("From");
-            tbl_mail.Columns.Add("Subject");
-            tbl_mail.Columns.Add("Date");
-
-            DataRow row;
-            while (reader.Read())
-            {
-                row = tbl_mail.NewRow();
-                row["From"] = reader["Username"];
-                row["Subject"] = reader["Subject"];
-                row["Date"] = reader["msgdate"];
-
-                tbl_mail.Rows.Add(row);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable("Mails");
+            da.Fill(dt);
+            dg.ItemsSource = dt.DefaultView;
+            dg.Columns[1].Visibility = Visibility.Hidden;
 
 
-            }
+            /* SqlDataReader reader = cmd.ExecuteReader();
 
-            dg.ItemsSource = tbl_mail.DefaultView;
+             DataTable tbl_mail = new DataTable();
+             tbl_mail.Columns.Add("From");
+             tbl_mail.Columns.Add("Subject");
+             tbl_mail.Columns.Add("Date");
+
+             DataRow row;
+             while (reader.Read())
+             {
+                 row = tbl_mail.NewRow();
+                 row["From"] = reader["Username"];
+                 row["Subject"] = reader["Subject"];
+                 row["Date"] = reader["msgdate"];
+
+                 tbl_mail.Rows.Add(row);
 
 
-            reader.Close();
+             }
 
+             dg.ItemsSource = tbl_mail.DefaultView;
+       //      dg.Columns[1].Visibility = Visibility.Hidden;
 
+             reader.Close();
+
+     */
             con.Close();
 
         }
@@ -120,32 +128,39 @@ namespace WpfApp2
             SqlCommand cmd = new SqlCommand("msgpro", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@theloggedemail", str));
-            SqlDataReader reader = cmd.ExecuteReader();
 
-            DataTable tbl_mail = new DataTable();
-            tbl_mail.Columns.Add("From");
-            tbl_mail.Columns.Add("Subject");
-            tbl_mail.Columns.Add("Date");
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable("Mails");
+            da.Fill(dt);
+            dg.ItemsSource = dt.DefaultView;
+            dg.Columns[1].Visibility = Visibility.Hidden;
+            dg.Columns[0].Visibility = Visibility.Visible;
+            /*  SqlDataReader reader = cmd.ExecuteReader();
 
-            DataRow row;
-            while (reader.Read())
-            {
-                row = tbl_mail.NewRow();
-                row["From"] = reader["Username"];
-                row["Subject"] = reader["Subject"];
-                row["Date"] = reader["msgdate"];
+              DataTable tbl_mail = new DataTable();
+              tbl_mail.Columns.Add("From");
+              tbl_mail.Columns.Add("Subject");
+              tbl_mail.Columns.Add("Date");
 
-                tbl_mail.Rows.Add(row);
+              DataRow row;
+              while (reader.Read())
+              {
+                  row = tbl_mail.NewRow();
+                  row["From"] = reader["Username"];
+                  row["Subject"] = reader["Subject"];
+                  row["Date"] = reader["msgdate"];
 
-
-            }
-
-            dg.ItemsSource = tbl_mail.DefaultView;
-
-
-            reader.Close();
+                  tbl_mail.Rows.Add(row);
 
 
+              }
+
+              dg.ItemsSource = tbl_mail.DefaultView;
+
+
+              reader.Close();
+
+      */
             con.Close();
         }
 
@@ -167,31 +182,38 @@ namespace WpfApp2
             SqlCommand cmd = new SqlCommand("msgsent", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@sender", str));
-            SqlDataReader reader = cmd.ExecuteReader();
 
-            DataTable tbl_mail = new DataTable();
-            tbl_mail.Columns.Add("To");
-            tbl_mail.Columns.Add("Subject");
-            tbl_mail.Columns.Add("Date");
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable("Mails");
+            da.Fill(dt);
+            dg.ItemsSource = dt.DefaultView;
+            dg.Columns[0].Visibility = Visibility.Hidden;
+            dg.Columns[1].Visibility = Visibility.Visible;
+            /* SqlDataReader reader = cmd.ExecuteReader();
 
-            DataRow row;
-            while (reader.Read())
-            {
-                row = tbl_mail.NewRow();
-                row["To"] = reader["Username"];
-                row["Subject"] = reader["Subject"];
-                row["Date"] = reader["msgdate"];
+             DataTable tbl_mail = new DataTable();
+             tbl_mail.Columns.Add("To");
+             tbl_mail.Columns.Add("Subject");
+             tbl_mail.Columns.Add("Date");
 
-                tbl_mail.Rows.Add(row);
+             DataRow row;
+             while (reader.Read())
+             {
+                 row = tbl_mail.NewRow();
+                 row["To"] = reader["Username"];
+                 row["Subject"] = reader["Subject"];
+                 row["Date"] = reader["msgdate"];
+
+                 tbl_mail.Rows.Add(row);
 
 
-            }
+             }
 
-            dg.ItemsSource = tbl_mail.DefaultView;
+             dg.ItemsSource = tbl_mail.DefaultView;
 
 
-            reader.Close();
-
+             reader.Close();
+             */
 
             con.Close();
         }
@@ -214,7 +236,12 @@ namespace WpfApp2
             SqlCommand cmd = new SqlCommand("msgdraft", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@sender", str));
-            SqlDataReader reader = cmd.ExecuteReader();
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable("Mails");
+            da.Fill(dt);
+            dg.ItemsSource = dt.DefaultView;
+            /*SqlDataReader reader = cmd.ExecuteReader();
 
             DataTable tbl_mail = new DataTable();
             tbl_mail.Columns.Add("To");
@@ -238,7 +265,7 @@ namespace WpfApp2
 
 
             reader.Close();
-
+            */
 
             con.Close();
         }
@@ -262,32 +289,38 @@ namespace WpfApp2
             SqlCommand cmd = new SqlCommand("msgspam", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@email", str));
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            DataTable tbl_mail = new DataTable();
-            tbl_mail.Columns.Add("From");
-            tbl_mail.Columns.Add("Subject");
-            tbl_mail.Columns.Add("Date");
-
-            DataRow row;
-            while (reader.Read())
-            {
-                row = tbl_mail.NewRow();
-                row["From"] = reader["Username"];
-                row["Subject"] = reader["Subject"];
-                row["Date"] = reader["msgdate"];
-
-                tbl_mail.Rows.Add(row);
 
 
-            }
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable("Mails");
+            da.Fill(dt);
+            dg.ItemsSource = dt.DefaultView;
+            /* SqlDataReader reader = cmd.ExecuteReader();
 
-            dg.ItemsSource = tbl_mail.DefaultView;
+             DataTable tbl_mail = new DataTable();
+             tbl_mail.Columns.Add("From");
+             tbl_mail.Columns.Add("Subject");
+             tbl_mail.Columns.Add("Date");
+
+             DataRow row;
+             while (reader.Read())
+             {
+                 row = tbl_mail.NewRow();
+                 row["From"] = reader["Username"];
+                 row["Subject"] = reader["Subject"];
+                 row["Date"] = reader["msgdate"];
+
+                 tbl_mail.Rows.Add(row);
 
 
-            reader.Close();
+             }
+
+             dg.ItemsSource = tbl_mail.DefaultView;
 
 
+             reader.Close();
+
+     */
             con.Close();
 
 

@@ -27,9 +27,12 @@
             <Button Click="Button_spam">Spam</Button>
             <Button Click="Button_Sent">Sent</Button>
         </StackPanel>
-        <DataGrid Name="dg" Grid.Column="1" Grid.Row="1" ColumnWidth="150"  CanUserResizeColumns="False" IsReadOnly="True">
+        <DataGrid Name="dg" Grid.Column="1" Grid.Row="1" ColumnWidth="150"  CanUserResizeColumns="False" IsReadOnly="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
-
+                <DataGridTextColumn Binding="{Binding Username}" Header="From"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Username}" Header="To"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Subject}" Header="Subject"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding msgdate}" Header="Date"></DataGridTextColumn>
             </DataGrid.Columns>
             <DataGrid.RowDetailsTemplate>
                 <DataTemplate>
@@ -45,21 +48,21 @@
                                 <RowDefinition Height="auto"></RowDefinition>
                             </Grid.RowDefinitions>
                             <TextBlock Name="hey" Text="From : " FontWeight="Bold" ></TextBlock>
-                            <TextBlock Text="{Binding From }" Grid.Column="1" Grid.Row="0" ></TextBlock>
+                           
 
-                            <TextBlock Text="{Binding From }" Grid.Column="1" Grid.Row="0" ></TextBlock>
-                            <TextBlock Text="{Binding To }" Grid.Column="1" Grid.Row="0" ></TextBlock>
+        
+                            <TextBlock Text="{Binding Username }" Grid.Column="1" Grid.Row="0" ></TextBlock>
 
                             <TextBlock Text="Subject : " FontWeight="Bold" Grid.Column="0" Grid.Row="1" ></TextBlock>
                             <TextBlock Text="{Binding Subject }" Grid.Column="1" Grid.Row="1" ></TextBlock>
                             <TextBlock Text="Date : " FontWeight="Bold" Grid.Column="0" Grid.Row="2" ></TextBlock>
-                            <TextBlock Text="{Binding Date }" Grid.Column="1" Grid.Row="2" ></TextBlock>
+                            <TextBlock Text="{Binding msgdate }" Grid.Column="1" Grid.Row="2" ></TextBlock>
                         </Grid>
                     </DockPanel>
                 </DataTemplate>
             </DataGrid.RowDetailsTemplate>
         </DataGrid>
-        <TextBlock Name="msgs" HorizontalAlignment="Left" Margin="199,106,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.Row="1"/>
+        <TextBlock Name="msgs" HorizontalAlignment="Left" Margin="199,106,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Grid.Row="1"/>
 
     </Grid>
 </Window>
