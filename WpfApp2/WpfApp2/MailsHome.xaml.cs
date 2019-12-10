@@ -317,23 +317,52 @@ namespace WpfApp2
             SqlConnection con = new SqlConnection(connec);
             con.Open();
 
-            SqlCommand showuser = new SqlCommand("deletemsg", con);
-            showuser.CommandType = CommandType.StoredProcedure;
-            showuser.Parameters.Add(new SqlParameter("@id", num));
-            showuser.ExecuteNonQuery();
-            con.Close();
+            if (lastfun == "inbox")
+            {
+                SqlCommand showuser = new SqlCommand("updatetodelete", con);
+                showuser.CommandType = CommandType.StoredProcedure;
+                showuser.Parameters.Add(new SqlParameter("@id", num));
+                showuser.ExecuteNonQuery();
 
-            if(lastfun =="inbox")
                 Button_inbox(new object(), new RoutedEventArgs());
+            }
+
+
 
             else if (lastfun == "spam")
+            {
+                SqlCommand showuser = new SqlCommand("updatetodelete", con);
+                showuser.CommandType = CommandType.StoredProcedure;
+                showuser.Parameters.Add(new SqlParameter("@id", num));
+                showuser.ExecuteNonQuery();
+
                 Button_spam(new object(), new RoutedEventArgs());
-
+            }
             else if (lastfun == "sent")
+            {
+                SqlCommand showuser = new SqlCommand("updatetodeletesent", con);
+                showuser.CommandType = CommandType.StoredProcedure;
+                showuser.Parameters.Add(new SqlParameter("@id", num));
+                showuser.ExecuteNonQuery();
                 Button_Sent(new object(), new RoutedEventArgs());
-
-            else 
+            }
+            else
+            {
+                SqlCommand showuser = new SqlCommand("deletemsg", con);
+                showuser.CommandType = CommandType.StoredProcedure;
+                showuser.Parameters.Add(new SqlParameter("@id", num));
+                showuser.ExecuteNonQuery();
                 Button_draft(new object(), new RoutedEventArgs());
+
+            }
+            SqlCommand del = new SqlCommand("deleteboth", con);
+            del.CommandType = CommandType.StoredProcedure;
+            del.ExecuteNonQuery();
+
+            SqlCommand deltwin = new SqlCommand("deletetwin", con);
+            deltwin.CommandType = CommandType.StoredProcedure;
+            deltwin.ExecuteNonQuery();
+            con.Close();
 
         }
 

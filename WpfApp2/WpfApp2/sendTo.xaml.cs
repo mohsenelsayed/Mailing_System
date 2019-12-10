@@ -86,6 +86,22 @@ namespace WpfApp2
                 SqlConnection con = new SqlConnection(connec);
                 con.Open();
 
+                SqlCommand checkemail = new SqlCommand("check_email_is_in_the_system", con);
+                checkemail.CommandType = CommandType.StoredProcedure;
+
+                checkemail.Parameters.Add(new SqlParameter("@email", towpf.Text));
+
+                int emailcount = Convert.ToInt32(checkemail.ExecuteScalar());
+
+                if (emailcount != 1)
+                {
+                    MessageBox.Show("This email Does not exist");
+                    return;
+                }
+
+
+
+
                 SqlCommand cmd = new SqlCommand("sendmsg", con);
                 cmd.CommandType = CommandType.StoredProcedure;
 
