@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2"
-          Closing="Sendwindow_Closing"  
 
         mc:Ignorable="d"
         Title="New Massege" Height="400" Width="450">
@@ -23,7 +22,7 @@
         <StackPanel Orientation="Horizontal">
             
             <Button HorizontalAlignment="Left" Margin="30 10" Width="100" Click="Button_sendmsg">Send</Button>
-            <Button HorizontalAlignment="Right" Margin="120 10 0 10" Width="100" Click="Button_discard">Discard</Button>
+            <Button HorizontalAlignment="Right" Margin="120 10 0 10" Width="100" Click="Button_discard">Draft it </Button>
         </StackPanel>
     </StackPanel>
 </Window>

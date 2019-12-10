@@ -23,9 +23,10 @@ namespace WpfApp2
     public partial class MailsHome : Window
     {
 
-        public string connec = "Data Source=DESKTOP-I9CKISJ;Initial Catalog=mailingsystem;Integrated Security=True";
+        public string connec = "Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True";
 
         public string str;
+        public string lastfun;
         public MailsHome()
         {
             InitializeComponent();
@@ -34,71 +35,24 @@ namespace WpfApp2
         public MailsHome(string val)
         {
             InitializeComponent();
-     
 
             str = val;
-
-            
 
             SqlConnection con = new SqlConnection(connec);
             con.Open();
 
-    /*        SqlCommand showuser = new SqlCommand("showusername", con);
+            SqlCommand showuser = new SqlCommand("showusername", con);
             showuser.CommandType = CommandType.StoredProcedure;
             showuser.Parameters.Add(new SqlParameter("@email", str));
             SqlDataReader userreader = showuser.ExecuteReader();
             while (userreader.Read())
-                usernamewpf.Text = "Welcome back , "+(userreader["username"].ToString());;
+                usernamewpf.Text = "Welcome back , " + (userreader["username"].ToString()); ;
             userreader.Close();
-            */
-
-
-            SqlCommand num = new SqlCommand("msgnum", con);
-            num.CommandType = CommandType.StoredProcedure;
-            num.Parameters.Add(new SqlParameter("@email", str));
-            int count = Convert.ToInt32(num.ExecuteScalar());
-            msgs.Text = "messages number is " + count;
-
-
-
-            SqlCommand cmd = new SqlCommand("msgpro", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add(new SqlParameter("@theloggedemail", str));
-
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable("Mails");
-            da.Fill(dt);
-            dg.ItemsSource = dt.DefaultView;
-            dg.Columns[1].Visibility = Visibility.Hidden;
-
-
-            /* SqlDataReader reader = cmd.ExecuteReader();
-
-             DataTable tbl_mail = new DataTable();
-             tbl_mail.Columns.Add("From");
-             tbl_mail.Columns.Add("Subject");
-             tbl_mail.Columns.Add("Date");
-
-             DataRow row;
-             while (reader.Read())
-             {
-                 row = tbl_mail.NewRow();
-                 row["From"] = reader["Username"];
-                 row["Subject"] = reader["Subject"];
-                 row["Date"] = reader["msgdate"];
-
-                 tbl_mail.Rows.Add(row);
-
-
-             }
-
-             dg.ItemsSource = tbl_mail.DefaultView;
-       //      dg.Columns[1].Visibility = Visibility.Hidden;
-
-             reader.Close();
-
-     */
             con.Close();
+
+
+            Button_inbox(new object(), new RoutedEventArgs());
+
 
         }
 
@@ -133,8 +87,14 @@ namespace WpfApp2
             DataTable dt = new DataTable("Mails");
             da.Fill(dt);
             dg.ItemsSource = dt.DefaultView;
-            dg.Columns[1].Visibility = Visibility.Hidden;
             dg.Columns[0].Visibility = Visibility.Visible;
+            dg.Columns[1].Visibility = Visibility.Hidden;
+            dg.Columns[4].Visibility = Visibility.Hidden;
+            dg.Columns[5].Visibility = Visibility.Hidden;
+            dg.Columns[6].Visibility = Visibility.Hidden;
+            dg.Columns[7].Visibility = Visibility.Hidden;
+            
+            
             /*  SqlDataReader reader = cmd.ExecuteReader();
 
               DataTable tbl_mail = new DataTable();
@@ -162,6 +122,7 @@ namespace WpfApp2
 
       */
             con.Close();
+            lastfun = "inbox";
         }
 
         private void Button_Sent(object sender, RoutedEventArgs e)
@@ -187,8 +148,8 @@ namespace WpfApp2
             DataTable dt = new DataTable("Mails");
             da.Fill(dt);
             dg.ItemsSource = dt.DefaultView;
-            dg.Columns[0].Visibility = Visibility.Hidden;
             dg.Columns[1].Visibility = Visibility.Visible;
+            dg.Columns[0].Visibility = Visibility.Hidden;
             /* SqlDataReader reader = cmd.ExecuteReader();
 
              DataTable tbl_mail = new DataTable();
@@ -216,6 +177,8 @@ namespace WpfApp2
              */
 
             con.Close();
+            lastfun = "sent";
+           
         }
 
         private void Button_draft(object sender, RoutedEventArgs e)
@@ -241,6 +204,8 @@ namespace WpfApp2
             DataTable dt = new DataTable("Mails");
             da.Fill(dt);
             dg.ItemsSource = dt.DefaultView;
+            dg.Columns[1].Visibility = Visibility.Visible;
+            dg.Columns[0].Visibility = Visibility.Hidden;
             /*SqlDataReader reader = cmd.ExecuteReader();
 
             DataTable tbl_mail = new DataTable();
@@ -268,6 +233,8 @@ namespace WpfApp2
             */
 
             con.Close();
+            lastfun = "draft";
+
         }
 
         private void Button_spam(object sender, RoutedEventArgs e)
@@ -295,6 +262,10 @@ namespace WpfApp2
             DataTable dt = new DataTable("Mails");
             da.Fill(dt);
             dg.ItemsSource = dt.DefaultView;
+
+            dg.Columns[0].Visibility = Visibility.Visible;
+            dg.Columns[1].Visibility = Visibility.Hidden;
+
             /* SqlDataReader reader = cmd.ExecuteReader();
 
              DataTable tbl_mail = new DataTable();
@@ -323,6 +294,7 @@ namespace WpfApp2
      */
             con.Close();
 
+            lastfun = "spam";
 
         }
 
@@ -333,5 +305,37 @@ namespace WpfApp2
             Close();
             
         }
+
+        private void Button_Delete(object sender, RoutedEventArgs e)
+        {
+
+            DataRowView row = dg.SelectedItem as DataRowView;
+
+           string msgnum = row.Row.ItemArray[5].ToString();
+            int num = Convert.ToInt32(msgnum);
+            
+            SqlConnection con = new SqlConnection(connec);
+            con.Open();
+
+            SqlCommand showuser = new SqlCommand("deletemsg", con);
+            showuser.CommandType = CommandType.StoredProcedure;
+            showuser.Parameters.Add(new SqlParameter("@id", num));
+            showuser.ExecuteNonQuery();
+            con.Close();
+
+            if(lastfun =="inbox")
+                Button_inbox(new object(), new RoutedEventArgs());
+
+            else if (lastfun == "spam")
+                Button_spam(new object(), new RoutedEventArgs());
+
+            else if (lastfun == "sent")
+                Button_Sent(new object(), new RoutedEventArgs());
+
+            else 
+                Button_draft(new object(), new RoutedEventArgs());
+
+        }
+
     }
 }

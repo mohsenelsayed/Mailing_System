@@ -24,7 +24,7 @@ namespace WpfApp2
     /// </summary>
     public partial class sendTo : Window
     {
-        public string connec = "Data Source=DESKTOP-I9CKISJ;Initial Catalog=mailingsystem;Integrated Security=True";
+        public string connec = "Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True";
         public string str;
         public sendTo(String val)
         {
@@ -76,7 +76,9 @@ namespace WpfApp2
             Close();
         }
 
-        private void Sendwindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+    
+
+        private void Button_discard(object sender, RoutedEventArgs e)
         {
             if (!String.IsNullOrWhiteSpace(towpf.Text))
             {
@@ -96,13 +98,9 @@ namespace WpfApp2
 
                 cmd.ExecuteNonQuery();
                 con.Close();
+                Close();
 
             }
-        }
-
-        private void Button_discard(object sender, RoutedEventArgs e)
-        {
-            Close();
         }
     }
 }
