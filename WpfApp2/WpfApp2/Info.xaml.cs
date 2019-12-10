@@ -19,13 +19,13 @@ namespace WpfApp2
     /// Interaction logic for Update.xaml
     /// </summary>
    
-    public partial class Update : Window
+    public partial class Info : Window
     {
-        public Update(string val)
+         public users u = new users();
+        public Info(string val)
         {
             InitializeComponent();
             string name = val;
-            users u = new users();
             string connec = "Data Source=DESKTOP-I9CKISJ;Initial Catalog=mailingsystem;Integrated Security=True";
 
                 SqlConnection con = new SqlConnection(connec);
@@ -46,9 +46,40 @@ namespace WpfApp2
             userreader.Close();
             con.Close();
             username.Text = (u.name).ToString();
-            email.Text = (u.email).ToString();
-            password.Text = (u.password).ToString();
-            
+            foreach (char x in u.password.ToString())
+            {
+                 password.Text +='*';
+            }
+            age.Text = (u.age).ToString();
+            phone.Text = (u.phone).ToString();
+        }
+
+        private void back_welcome(object sender, RoutedEventArgs e)
+        {
+            MailsHome mh = new MailsHome((u.email).ToString());
+            mh.Show();
+            Close();
+        }
+
+        private void Button_username(object sender, RoutedEventArgs e)
+        {
+            changeUsername us = new changeUsername(u.name.ToString(),u.email.ToString());
+            us.Show();
+        }
+
+        private void Button_password(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_phone(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_age(object sender, RoutedEventArgs e)
+        {
+
         }
     }
     public class users

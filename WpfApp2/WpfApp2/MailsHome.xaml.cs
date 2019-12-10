@@ -339,7 +339,7 @@ namespace WpfApp2
 
         private void Button_update(object sender, RoutedEventArgs e)
         {
-            Update u = new Update(name);
+            Info u = new Info(name);
             u.Show();
             Close();
         }
