@@ -26,6 +26,8 @@ namespace WpfApp2
         public string connec = "Data Source=DESKTOP-I9CKISJ;Initial Catalog=mailingsystem;Integrated Security=True";
 
         public string str;
+        public string name;
+
         public MailsHome()
         {
             InitializeComponent();
@@ -43,14 +45,15 @@ namespace WpfApp2
             SqlConnection con = new SqlConnection(connec);
             con.Open();
 
-    /*        SqlCommand showuser = new SqlCommand("showusername", con);
+               SqlCommand showuser = new SqlCommand("showusername", con);
             showuser.CommandType = CommandType.StoredProcedure;
             showuser.Parameters.Add(new SqlParameter("@email", str));
             SqlDataReader userreader = showuser.ExecuteReader();
             while (userreader.Read())
-                usernamewpf.Text = "Welcome back , "+(userreader["username"].ToString());;
+                name =(userreader["username"].ToString());;
             userreader.Close();
-            */
+
+            usernamewpf.Text += name;
 
 
             SqlCommand num = new SqlCommand("msgnum", con);
@@ -332,6 +335,13 @@ namespace WpfApp2
             w.Show();
             Close();
             
+        }
+
+        private void Button_update(object sender, RoutedEventArgs e)
+        {
+            Update u = new Update(name);
+            u.Show();
+            Close();
         }
     }
 }

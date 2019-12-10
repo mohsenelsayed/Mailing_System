@@ -247,3 +247,5 @@ D:\mail3\Mailing_System\WpfApp2\WpfApp2\obj\Debug\WpfApp2.csproj.GenerateResourc
 D:\mail3\Mailing_System\WpfApp2\WpfApp2\obj\Debug\WpfApp2.csproj.CoreCompileInputs.cache
 D:\mail3\Mailing_System\WpfApp2\WpfApp2\obj\Debug\WpfApp2.exe
 D:\mail3\Mailing_System\WpfApp2\WpfApp2\obj\Debug\WpfApp2.pdb
+D:\mail3\Mailing_System\WpfApp2\WpfApp2\obj\Debug\Update.g.cs
+D:\mail3\Mailing_System\WpfApp2\WpfApp2\obj\Debug\Update.baml
