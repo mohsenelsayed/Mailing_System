@@ -22,7 +22,6 @@ namespace WpfApp2
     /// </summary>
     public partial class MailsHome : Window
     {
-
         public string connec = "Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True";
 
         public string str;
@@ -35,9 +34,7 @@ namespace WpfApp2
         public MailsHome(string val)
         {
             InitializeComponent();
-
             str = val;
-
             SqlConnection con = new SqlConnection(connec);
             con.Open();
 
@@ -63,7 +60,8 @@ namespace WpfApp2
         }
         private void Button_inbox(object sender, RoutedEventArgs e)
         {
-                
+            contmsg.Visibility = Visibility.Hidden;
+
 
 
             SqlConnection con = new SqlConnection(connec);
@@ -78,7 +76,7 @@ namespace WpfApp2
 
 
 
-            
+
             SqlCommand cmd = new SqlCommand("msgpro", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@theloggedemail", str));
@@ -93,8 +91,8 @@ namespace WpfApp2
             dg.Columns[5].Visibility = Visibility.Hidden;
             dg.Columns[6].Visibility = Visibility.Hidden;
             dg.Columns[7].Visibility = Visibility.Hidden;
-            
-            
+
+
             /*  SqlDataReader reader = cmd.ExecuteReader();
 
               DataTable tbl_mail = new DataTable();
@@ -127,6 +125,8 @@ namespace WpfApp2
 
         private void Button_Sent(object sender, RoutedEventArgs e)
         {
+            contmsg.Visibility = Visibility.Hidden;
+
             SqlConnection con = new SqlConnection(connec);
             con.Open();
 
@@ -178,17 +178,18 @@ namespace WpfApp2
 
             con.Close();
             lastfun = "sent";
-           
+
         }
 
         private void Button_draft(object sender, RoutedEventArgs e)
         {
-           
+            contmsg.Visibility = Visibility.Visible;
+
             SqlConnection con = new SqlConnection(connec);
             con.Open();
 
 
-            
+
             SqlCommand num = new SqlCommand("msgdraftnum", con);
             num.CommandType = CommandType.StoredProcedure;
             num.Parameters.Add(new SqlParameter("@email", str));
@@ -239,6 +240,7 @@ namespace WpfApp2
 
         private void Button_spam(object sender, RoutedEventArgs e)
         {
+            contmsg.Visibility = Visibility.Hidden;
 
             SqlConnection con = new SqlConnection(connec);
             con.Open();
@@ -303,7 +305,7 @@ namespace WpfApp2
             Welcome w = new Welcome();
             w.Show();
             Close();
-            
+
         }
 
         private void Button_Delete(object sender, RoutedEventArgs e)
@@ -311,9 +313,9 @@ namespace WpfApp2
 
             DataRowView row = dg.SelectedItem as DataRowView;
 
-           string msgnum = row.Row.ItemArray[5].ToString();
-            int num = Convert.ToInt32(msgnum);
-            
+            string msgnum = row.Row.ItemArray[5].ToString();
+             int num = Convert.ToInt32(msgnum);
+
             SqlConnection con = new SqlConnection(connec);
             con.Open();
 
@@ -365,6 +367,17 @@ namespace WpfApp2
             con.Close();
 
         }
+        private void Button_cont(object sender, RoutedEventArgs e)
+        {
+            if (dg.SelectedIndex != -1)
+            {
 
+                DataRowView row = dg.SelectedItem as DataRowView;
+                sendTo st = new sendTo(row.Row.ItemArray[3].ToString(), row.Row.ItemArray[1].ToString(), row.Row.ItemArray[4].ToString(), Convert.ToInt32(row.Row.ItemArray[5]));
+                st.Show();
+            }
+            else
+                MessageBox.Show("Pls Select a message");
+        }
     }
 }

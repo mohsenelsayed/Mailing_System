@@ -23,9 +23,11 @@
         <StackPanel Width="auto" Grid.Row="1">
             <Button Click="Button_New">New Message</Button>
             <Button Click="Button_inbox">Inbox</Button>
+            <Button Click="Button_Sent" Content="Sent"/>
             <Button Click="Button_draft">Drafts</Button>
             <Button Click="Button_spam">Spam</Button>
-            <Button Click="Button_Sent">Sent</Button>
+            <Button Name="contmsg" Click="Button_cont" Content="Send the draft"/>
+
         </StackPanel>
         <DataGrid Name="dg"  SelectedItem="{Binding MsgID}" Grid.Column="1" Grid.Row="1" ColumnWidth="150"  CanUserResizeColumns="False" IsReadOnly="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
@@ -53,6 +55,7 @@
                                 <RowDefinition Height="auto"></RowDefinition>
                                 <RowDefinition Height="auto"></RowDefinition>
                                 <RowDefinition Height="auto"></RowDefinition>
+
                                 <RowDefinition Height="35"></RowDefinition>
                                 <RowDefinition Height="auto"></RowDefinition>
                                 <RowDefinition Height="6"></RowDefinition>
@@ -78,6 +81,7 @@
                             <TextBlock Text="Date : " FontWeight="Bold" Grid.Column="0" Grid.Row="4" ></TextBlock>
                             <TextBlock Text="{Binding Msgdate }" Grid.Column="1" Grid.Row="4" ></TextBlock>
                             <Button Name="deletemsg" Click="Button_Delete"  Grid.Column="1" Grid.Row="5">Delete</Button>
+
                             <TextBlock  Text="" FontWeight="Bold" Grid.Column="0" Grid.Row="6" ></TextBlock>
 
 
