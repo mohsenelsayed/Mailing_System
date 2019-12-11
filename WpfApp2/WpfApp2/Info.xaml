@@ -11,10 +11,10 @@
             <Image Source="images/back.png" />
         </Button>
         <StackPanel Margin="50 50">
-        <Border>
-            <StackPanel>
-                <TextBlock FontSize="30" FontWeight="Bold" Text="Personal Info : "></TextBlock>
-                <StackPanel Margin="75 0">
+            <Border>
+                <StackPanel>
+                    <TextBlock FontSize="30" FontWeight="Bold" Text="Personal Info : "></TextBlock>
+                    <StackPanel Margin="75 0">
                         <DockPanel>
                             <TextBlock FontSize="20" FontWeight="Bold" Margin="15" Text="username : "></TextBlock>
                             <TextBlock FontSize="15" Margin="20" Name="username"></TextBlock>
@@ -22,17 +22,17 @@
                                 <Image Source="images/edit.jpg" Width="30" />
                             </Button>
                         </DockPanel>
-                       
+
                         <DockPanel>
-                            
-                    <TextBlock FontSize="20" FontWeight="Bold" Margin="15" Text="password : "></TextBlock>
-                    <TextBlock FontSize="15" Margin="20" Name="password"></TextBlock>
+
+                            <TextBlock FontSize="20" FontWeight="Bold" Margin="15" Text="password : "></TextBlock>
+                            <TextBlock FontSize="15" Margin="20" Name="password"></TextBlock>
                             <Button Style="{StaticResource MyButton}" Click="Button_password" HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Margin="20 0">
                                 <Image Source="images/edit.jpg" Width="30" />
                             </Button>
                         </DockPanel>
                         <DockPanel>
-                            
+
                             <TextBlock FontSize="20" FontWeight="Bold" Margin="15" Text="phone : "></TextBlock>
                             <TextBlock FontSize="15" Margin="20" Name="phone"></TextBlock>
                             <Button Style="{StaticResource MyButton}" Click="Button_phone" HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Margin="20 0">
@@ -40,16 +40,16 @@
                             </Button>
                         </DockPanel>
                         <DockPanel>
-                    <TextBlock FontSize="20" FontWeight="Bold" Margin="15" Text="age : "></TextBlock>
-                    <TextBlock FontSize="15" Margin="20"  Name="age"></TextBlock>
+                            <TextBlock FontSize="20" FontWeight="Bold" Margin="15" Text="age : "></TextBlock>
+                            <TextBlock FontSize="15" Margin="20"  Name="age"></TextBlock>
                             <Button Style="{StaticResource MyButton}" Click="Button_age" HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Margin="20 0">
                                 <Image Source="images/edit.jpg" Width="30" />
                             </Button>
                         </DockPanel>
-                    
+
+                    </StackPanel>
                 </StackPanel>
-            </StackPanel>
-        </Border>
-    </StackPanel>
+            </Border>
+        </StackPanel>
     </StackPanel>
 </Window>

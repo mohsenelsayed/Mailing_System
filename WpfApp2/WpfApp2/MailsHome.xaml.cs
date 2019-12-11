@@ -25,12 +25,7 @@ namespace WpfApp2
         public string connec = "Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True";
 
         public string str;
-<<<<<<< HEAD
-        public string name;
-
-=======
         public string lastfun;
->>>>>>> d5aa93ae3751d984bd413c7f9a1df660ba71a249
         public MailsHome()
         {
             InitializeComponent();
@@ -43,65 +38,14 @@ namespace WpfApp2
             SqlConnection con = new SqlConnection(connec);
             con.Open();
 
-<<<<<<< HEAD
-               SqlCommand showuser = new SqlCommand("showusername", con);
-=======
             SqlCommand showuser = new SqlCommand("showusername", con);
->>>>>>> d5aa93ae3751d984bd413c7f9a1df660ba71a249
             showuser.CommandType = CommandType.StoredProcedure;
             showuser.Parameters.Add(new SqlParameter("@email", str));
             SqlDataReader userreader = showuser.ExecuteReader();
             while (userreader.Read())
-<<<<<<< HEAD
-                name =(userreader["username"].ToString());;
-            userreader.Close();
-
-            usernamewpf.Text += name;
-
-
-            SqlCommand num = new SqlCommand("msgnum", con);
-            num.CommandType = CommandType.StoredProcedure;
-            num.Parameters.Add(new SqlParameter("@email", str));
-            int count = Convert.ToInt32(num.ExecuteScalar());
-            msgs.Text = "messages number is " + count;
-
-
-
-            SqlCommand cmd = new SqlCommand("msgpro", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add(new SqlParameter("@theloggedemail", str));
-
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable("Mails");
-            da.Fill(dt);
-            dg.ItemsSource = dt.DefaultView;
-            dg.Columns[1].Visibility = Visibility.Hidden;
-
-
-            /* SqlDataReader reader = cmd.ExecuteReader();
-
-             DataTable tbl_mail = new DataTable();
-             tbl_mail.Columns.Add("From");
-             tbl_mail.Columns.Add("Subject");
-             tbl_mail.Columns.Add("Date");
-
-             DataRow row;
-             while (reader.Read())
-             {
-                 row = tbl_mail.NewRow();
-                 row["From"] = reader["Username"];
-                 row["Subject"] = reader["Subject"];
-                 row["Date"] = reader["msgdate"];
-
-                 tbl_mail.Rows.Add(row);
-
-
-             }
-=======
                 usernamewpf.Text = "Welcome back , " + (userreader["username"].ToString()); ;
             userreader.Close();
             con.Close();
->>>>>>> d5aa93ae3751d984bd413c7f9a1df660ba71a249
 
 
             Button_inbox(new object(), new RoutedEventArgs());
@@ -436,10 +380,10 @@ namespace WpfApp2
                 MessageBox.Show("Pls Select a message");
         }
 
-        private void Button_update(object sender, RoutedEventArgs e)
+        private void Button_info(object sender, RoutedEventArgs e)
         {
-            Info u = new Info(name);
-            u.Show();
+            Info userinfo = new Info(str);
+            userinfo.Show();
             Close();
         }
     }

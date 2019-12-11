@@ -18,10 +18,12 @@ namespace WpfApp2
     /// <summary>
     /// Interaction logic for changeUsername.xaml
     /// </summary>
+    /// 
+
     public partial class changeUsername : Window
     {
         public String em;
-        public changeUsername(string Name,string email)
+        public changeUsername(string Name, string email)
         {
             InitializeComponent();
             username.Text = Name;
@@ -35,17 +37,26 @@ namespace WpfApp2
 
         private void Button_update(object sender, RoutedEventArgs e)
         {
-            string connec = "Data Source=DESKTOP-I9CKISJ;Initial Catalog=mailingsystem;Integrated Security=True";
 
+            if (String.IsNullOrWhiteSpace(username.Text)) { 
+                MessageBox.Show("u need to fill the username ");
+            return;
+        }
+
+                string connec = "Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True";
+
+            
             SqlConnection con = new SqlConnection(connec);
             con.Open();
-            string setUserName = "UPDATE Users SET username=@username WHERE email = @email";
+            string setUserName = "updateusername";
             SqlCommand setuser = new SqlCommand(setUserName, con);
-            setuser.Parameters.Add(new SqlParameter("@username", username.Text));
+            setuser.CommandType = System.Data.CommandType.StoredProcedure;
+            setuser.Parameters.Add(new SqlParameter("@newusername", username.Text));
             setuser.Parameters.Add(new SqlParameter("@email", em));
             setuser.ExecuteNonQuery();
             con.Close();
             Close();
+
         }
     }
 }

@@ -18,41 +18,19 @@ namespace WpfApp2
     /// <summary>
     /// Interaction logic for Update.xaml
     /// </summary>
-   
+
     public partial class Info : Window
     {
-         public users u = new users();
+        public string connec = "Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True";
+        public string name;
+        public users u = new users();
         public Info(string val)
         {
             InitializeComponent();
-            string name = val;
-            string connec = "Data Source=DESKTOP-I9CKISJ;Initial Catalog=mailingsystem;Integrated Security=True";
-
-                SqlConnection con = new SqlConnection(connec);
-                 con.Open();
-            string getUserData = "SELECT * FROM Users WHERE username = @name ";
-            SqlCommand getuser = new SqlCommand(getUserData, con);
-            getuser.Parameters.Add(new SqlParameter("@name", name));
-            getuser.CommandType = System.Data.CommandType.Text;
-             SqlDataReader userreader = getuser.ExecuteReader();
-            while (userreader.Read())
-            {
-                u.name = userreader["username"];
-                u.email = userreader["Email"];
-                u.password = userreader["Password"];
-                u.age = userreader["age"];
-                u.phone = userreader["phone"];
-            }
-            userreader.Close();
-            con.Close();
-            username.Text = (u.name).ToString();
-            foreach (char x in u.password.ToString())
-            {
-                 password.Text +='*';
-            }
-            age.Text = (u.age).ToString();
-            phone.Text = (u.phone).ToString();
+            name = val;
+            showdata();
         }
+        public event System.ComponentModel.CancelEventHandler Closing;
 
         private void back_welcome(object sender, RoutedEventArgs e)
         {
@@ -63,8 +41,10 @@ namespace WpfApp2
 
         private void Button_username(object sender, RoutedEventArgs e)
         {
-            changeUsername us = new changeUsername(u.name.ToString(),u.email.ToString());
+            changeUsername us = new changeUsername(u.name.ToString(), u.email.ToString());
             us.Show();
+           us.Closed += child_Closed;
+
         }
 
         private void Button_password(object sender, RoutedEventArgs e)
@@ -79,6 +59,45 @@ namespace WpfApp2
 
         private void Button_age(object sender, RoutedEventArgs e)
         {
+
+        }
+
+     
+        private void child_Closed(object sender, EventArgs e)
+        {
+            showdata();
+        }
+
+        public void showdata()
+        {
+
+            SqlConnection con = new SqlConnection(connec);
+            con.Open();
+            string getUserData = "showuserinfo";
+            SqlCommand getuser = new SqlCommand(getUserData, con);
+            getuser.Parameters.Add(new SqlParameter("@email", name));
+            getuser.CommandType = System.Data.CommandType.StoredProcedure;
+            SqlDataReader userreader = getuser.ExecuteReader();
+            while (userreader.Read())
+            {
+                u.name = userreader["username"];
+                u.password = userreader["Password"];
+                u.age = userreader["age"];
+                u.phone = userreader["phone"];
+            }
+            u.email = name;
+
+            userreader.Close();
+            con.Close();
+            username.Text = (u.name).ToString();
+            password.Text = "";
+            foreach (char x in u.password.ToString())
+            {
+                password.Text += '*';
+            }
+            age.Text = (u.age).ToString();
+            phone.Text = (u.phone).ToString();
+
 
         }
     }
