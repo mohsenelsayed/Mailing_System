@@ -17,10 +17,10 @@
             <RowDefinition Height="10*"></RowDefinition>
         </Grid.RowDefinitions>
         <DockPanel Grid.ColumnSpan="2" Margin="10 20">
-           
+
             <TextBlock
     Style="{StaticResource MaterialDesignHeadline4TextBlock}" Name="usernamewpf">
-  
+
             </TextBlock>
             <Button Height="30" Width="100" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Button_logOut">Log Out</Button>
         </DockPanel>
@@ -43,8 +43,8 @@
       Orientation="Vertical"
       TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
       Margin="8,24,16,24">
-                        
-                        
+
+
                         <Button  Content="Account Info" Click="Button_info" Margin="0 7" />
                         <Button Click="Button_New" Margin="0 7">New Message</Button>
                         <Button Click="Button_inbox " Margin="0 7">Inbox</Button>
@@ -52,19 +52,19 @@
                         <Button Click="Button_spam" Margin="0 7">Spam</Button>
                         <Button Click="Button_draft" Margin="0 7">Drafts</Button>
                         <Button Name="contmsg" Margin="0 7" Click="Button_cont" Content="Send the draft"/>
-                       
+
                     </StackPanel>
                 </Expander>
-               
+
             </StackPanel>
-           
+
         </StackPanel>
-        
+
         <DataGrid Name="dg"  SelectedItem="{Binding MsgID}" Grid.Column="1" Grid.Row="1" ColumnWidth="150"  CanUserResizeColumns="False" IsReadOnly="True" AutoGenerateColumns="False">
-            
-            
-            
-         <DataGrid.Columns>
+
+
+
+            <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding username}" Header="From"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding username}" Header="To"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding Subject}" Header="Subject"></DataGridTextColumn>
@@ -118,7 +118,7 @@
                                             <TextBlock Text="{Binding Subject }" Grid.Column="1" Grid.Row="2" ></TextBlock>
 
                                             <TextBlock Text="Description : " FontWeight="Bold" Grid.Column="0" Grid.Row="3" ></TextBlock>
-                                            <TextBlock Text="{Binding Description }" Grid.Column="1" Grid.Row="3" ></TextBlock>
+                                            <TextBlock Width="700" TextWrapping="Wrap" Text="{Binding Description }" Grid.Column="1" Grid.Row="3" ></TextBlock>
 
                                             <TextBlock Text="Date : " FontWeight="Bold" Grid.Column="0" Grid.Row="4" ></TextBlock>
                                             <TextBlock Text="{Binding Msgdate }" Grid.Column="1" Grid.Row="4" ></TextBlock>
@@ -134,10 +134,10 @@
 
 
                         </StackPanel>
-</materialDesign:Card>
-                    
+                    </materialDesign:Card>
+
                 </DataTemplate>
-            </DataGrid.RowDetailsTemplate> 
+            </DataGrid.RowDetailsTemplate>
         </DataGrid>
         <TextBlock Name="msgs" HorizontalAlignment="Left" Margin="178,600,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Grid.Row="1" Height="38" Width="90" />
 
