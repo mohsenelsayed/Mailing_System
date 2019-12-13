@@ -14,21 +14,50 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="11*"></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
         </Grid.RowDefinitions>
         <DockPanel Grid.ColumnSpan="2" Margin="10 20">
-            <TextBlock Name="usernamewpf">User name</TextBlock>
-            <Button Height="22" Width="100" VerticalAlignment="Top" Click="Button_logOut">Log Out</Button>
+           
+            <TextBlock
+    Style="{StaticResource MaterialDesignHeadline4TextBlock}" Name="usernamewpf">
+  
+            </TextBlock>
+            <Button Height="30" Width="100" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Button_logOut">Log Out</Button>
         </DockPanel>
-        <StackPanel Width="auto" Grid.Row="1">
-            <Button Click="Button_New">New Message</Button>
-            <Button Click="Button_inbox">Inbox</Button>
-            <Button Click="Button_Sent" Content="Sent"/>
-            <Button Click="Button_draft">Drafts</Button>
-            <Button Click="Button_spam">Spam</Button>
-            <Button Name="contmsg" Click="Button_cont" Content="Send the draft"/>
-            <Button  Content="Account Info" Click="Button_info" />
-
+        <StackPanel  Grid.Row="1">
+            <StackPanel
+  Orientation="Horizontal">
+                <Expander
+    ExpandDirection="Left">
+                    <Expander.Header>
+                        <TextBlock
+      
+       >
+                            <TextBlock.LayoutTransform>
+                                <RotateTransform
+            Angle="90" />
+                            </TextBlock.LayoutTransform>
+                        </TextBlock>
+                    </Expander.Header>
+                    <StackPanel
+      Orientation="Vertical"
+      TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+      Margin="8,24,16,24">
+                        
+                        
+                        <Button  Content="Account Info" Click="Button_info" Margin="0 7" />
+                        <Button Click="Button_New" Margin="0 7">New Message</Button>
+                        <Button Click="Button_inbox " Margin="0 7">Inbox</Button>
+                        <Button Click="Button_Sent" Content="Sent" Margin="0 7"/>
+                        <Button Click="Button_draft" Margin="0 7">Drafts</Button>
+                        <Button Click="Button_spam" Margin="0 7">Spam</Button>
+                        <Button Name="contmsg" Margin="0 7" Click="Button_cont" Content="Send the draft"/>
+                       
+                    </StackPanel>
+                </Expander>
+               
+            </StackPanel>
+           
         </StackPanel>
         <DataGrid Name="dg"  SelectedItem="{Binding MsgID}" Grid.Column="1" Grid.Row="1" ColumnWidth="150"  CanUserResizeColumns="False" IsReadOnly="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
@@ -40,8 +69,6 @@
                 <DataGridTextColumn Binding="{Binding ToEmail}" Header="ToEmail"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding Description}" Header="Description"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding MsgID}" Header="Description"></DataGridTextColumn>
-
-
             </DataGrid.Columns>
             <DataGrid.RowDetailsTemplate>
                 <DataTemplate>
@@ -91,7 +118,7 @@
                 </DataTemplate>
             </DataGrid.RowDetailsTemplate>
         </DataGrid>
-        <TextBlock Name="msgs" HorizontalAlignment="Left" Margin="178,113,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Grid.Row="1" Height="38" Width="90" />
+        <TextBlock Name="msgs" HorizontalAlignment="Left" Margin="178,600,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Grid.Row="1" Height="38" Width="90" />
 
     </Grid>
 </Window>
