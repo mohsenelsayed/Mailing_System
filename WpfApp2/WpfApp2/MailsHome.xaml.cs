@@ -22,7 +22,7 @@ namespace WpfApp2
     /// </summary>
     public partial class MailsHome : Window
     {
-        public string connec = "Data Source=MEDHAT;Initial Catalog=mailingsystem;Integrated Security=True";
+        public string connec = "Data Source=DESKTOP-I9CKISJ ;Initial Catalog=mailingsystem;Integrated Security=True";
 
         public string str;
         public string lastfun;
@@ -93,32 +93,6 @@ namespace WpfApp2
             dg.Columns[7].Visibility = Visibility.Hidden;
 
 
-            /*  SqlDataReader reader = cmd.ExecuteReader();
-
-              DataTable tbl_mail = new DataTable();
-              tbl_mail.Columns.Add("From");
-              tbl_mail.Columns.Add("Subject");
-              tbl_mail.Columns.Add("Date");
-
-              DataRow row;
-              while (reader.Read())
-              {
-                  row = tbl_mail.NewRow();
-                  row["From"] = reader["Username"];
-                  row["Subject"] = reader["Subject"];
-                  row["Date"] = reader["msgdate"];
-
-                  tbl_mail.Rows.Add(row);
-
-
-              }
-
-              dg.ItemsSource = tbl_mail.DefaultView;
-
-
-              reader.Close();
-
-      */
             con.Close();
             lastfun = "inbox";
         }
@@ -150,31 +124,7 @@ namespace WpfApp2
             dg.ItemsSource = dt.DefaultView;
             dg.Columns[1].Visibility = Visibility.Visible;
             dg.Columns[0].Visibility = Visibility.Hidden;
-            /* SqlDataReader reader = cmd.ExecuteReader();
-
-             DataTable tbl_mail = new DataTable();
-             tbl_mail.Columns.Add("To");
-             tbl_mail.Columns.Add("Subject");
-             tbl_mail.Columns.Add("Date");
-
-             DataRow row;
-             while (reader.Read())
-             {
-                 row = tbl_mail.NewRow();
-                 row["To"] = reader["Username"];
-                 row["Subject"] = reader["Subject"];
-                 row["Date"] = reader["msgdate"];
-
-                 tbl_mail.Rows.Add(row);
-
-
-             }
-
-             dg.ItemsSource = tbl_mail.DefaultView;
-
-
-             reader.Close();
-             */
+          
 
             con.Close();
             lastfun = "sent";
@@ -207,31 +157,7 @@ namespace WpfApp2
             dg.ItemsSource = dt.DefaultView;
             dg.Columns[1].Visibility = Visibility.Visible;
             dg.Columns[0].Visibility = Visibility.Hidden;
-            /*SqlDataReader reader = cmd.ExecuteReader();
-
-            DataTable tbl_mail = new DataTable();
-            tbl_mail.Columns.Add("To");
-            tbl_mail.Columns.Add("Subject");
-            tbl_mail.Columns.Add("Date");
-
-            DataRow row;
-            while (reader.Read())
-            {
-                row = tbl_mail.NewRow();
-                row["To"] = reader["Username"];
-                row["Subject"] = reader["Subject"];
-                row["Date"] = reader["msgdate"];
-
-                tbl_mail.Rows.Add(row);
-
-
-            }
-
-            dg.ItemsSource = tbl_mail.DefaultView;
-
-
-            reader.Close();
-            */
+           
 
             con.Close();
             lastfun = "draft";
@@ -268,32 +194,7 @@ namespace WpfApp2
             dg.Columns[0].Visibility = Visibility.Visible;
             dg.Columns[1].Visibility = Visibility.Hidden;
 
-            /* SqlDataReader reader = cmd.ExecuteReader();
-
-             DataTable tbl_mail = new DataTable();
-             tbl_mail.Columns.Add("From");
-             tbl_mail.Columns.Add("Subject");
-             tbl_mail.Columns.Add("Date");
-
-             DataRow row;
-             while (reader.Read())
-             {
-                 row = tbl_mail.NewRow();
-                 row["From"] = reader["Username"];
-                 row["Subject"] = reader["Subject"];
-                 row["Date"] = reader["msgdate"];
-
-                 tbl_mail.Rows.Add(row);
-
-
-             }
-
-             dg.ItemsSource = tbl_mail.DefaultView;
-
-
-             reader.Close();
-
-     */
+           
             con.Close();
 
             lastfun = "spam";
@@ -385,6 +286,11 @@ namespace WpfApp2
             Info userinfo = new Info(str);
             userinfo.Show();
             Close();
+        }
+
+        private void Button_Reply(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

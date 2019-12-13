@@ -27,8 +27,8 @@
                     <materialDesign:ColorZone
         Mode="PrimaryLight"
         VerticalAlignment="Stretch">
-                        <materialDesign:PackIcon
-          Kind="AccountCircle"
+                        <Image
+          Source=""
           Height="128"
           Width="128"
           VerticalAlignment="Center"

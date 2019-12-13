@@ -22,7 +22,7 @@ namespace WpfApp2
     /// </summary>
     public partial class Login : Page
     {
-        public string connec = "Data Source=MEDHAT;Initial Catalog=mailingsystem;Integrated Security=True";
+        public string connec = "Data Source=DESKTOP-I9CKISJ ;Initial Catalog=mailingsystem;Integrated Security=True";
         public Login()
         {
             InitializeComponent();
