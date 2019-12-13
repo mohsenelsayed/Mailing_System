@@ -43,7 +43,7 @@ namespace WpfApp2
             return;
         }
 
-                string connec = "Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True";
+                string connec = "Data Source=DESKTOP-I9CKISJ;Initial Catalog=mailingsystem;Integrated Security=True";
 
             
             SqlConnection con = new SqlConnection(connec);

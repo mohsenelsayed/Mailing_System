@@ -277,3 +277,39 @@ C:\Users\RayXerxes\Desktop\New folder (3)\Mailing_System\WpfApp2\WpfApp2\obj\Deb
 C:\Users\RayXerxes\Desktop\New folder (3)\Mailing_System\WpfApp2\WpfApp2\obj\Debug\Info.g.cs
 C:\Users\RayXerxes\Desktop\New folder (3)\Mailing_System\WpfApp2\WpfApp2\obj\Debug\changeUsername.baml
 C:\Users\RayXerxes\Desktop\New folder (3)\Mailing_System\WpfApp2\WpfApp2\obj\Debug\Info.baml
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\bin\Debug\WpfApp2.exe.config
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\bin\Debug\WpfApp2.exe
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\bin\Debug\WpfApp2.pdb
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\obj\Debug\WpfApp2.csprojAssemblyReference.cache
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\obj\Debug\changeUsername.g.cs
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\obj\Debug\Info.g.cs
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\obj\Debug\Login.g.cs
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\obj\Debug\MailsHome.g.cs
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\obj\Debug\MainWindow.g.cs
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\obj\Debug\Register.g.cs
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\obj\Debug\sendTo.g.cs
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\obj\Debug\Welcome.g.cs
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\obj\Debug\App.g.cs
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\obj\Debug\WpfApp2_MarkupCompile.cache
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\obj\Debug\WpfApp2_MarkupCompile.lref
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\obj\Debug\App.baml
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\obj\Debug\changeUsername.baml
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\obj\Debug\Info.baml
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\obj\Debug\Login.baml
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\obj\Debug\MailsHome.baml
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\obj\Debug\MainWindow.baml
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\obj\Debug\Register.baml
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\obj\Debug\sendTo.baml
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\obj\Debug\Welcome.baml
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\obj\Debug\WpfApp2.g.resources
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\obj\Debug\WpfApp2.Properties.Resources.resources
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\obj\Debug\WpfApp2.csproj.GenerateResource.cache
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\obj\Debug\WpfApp2.csproj.CoreCompileInputs.cache
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\obj\Debug\WpfApp2.exe
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\obj\Debug\WpfApp2.pdb
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\bin\Debug\MaterialDesignColors.dll
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\bin\Debug\MaterialDesignThemes.Wpf.dll
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\bin\Debug\MaterialDesignColors.pdb
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\bin\Debug\MaterialDesignThemes.Wpf.pdb
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\bin\Debug\MaterialDesignThemes.Wpf.xml
+D:\mail4\Mailing_System\WpfApp2\WpfApp2\obj\Debug\WpfApp2.csproj.CopyComplete

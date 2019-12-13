@@ -4,21 +4,183 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Info"  Height="1050" Width="1400" Background=" #8469f4">
+        Title="Info"  Height="1050" Width="1400" >
     <StackPanel>
-        <Button Style="{StaticResource MyButton}" Width="50" HorizontalAlignment="Left" Background="Transparent" BorderThickness="0" Click="back_welcome">
+        <Button Style="{StaticResource MyButton}" Width="50" HorizontalAlignment="Left" Background="#8469f4" BorderThickness="0" Click="back_welcome">
             <Image Source="images/back.png" />
         </Button>
-        <StackPanel Margin="50 50">
+        <DockPanel Width="700" Height="auto" Margin="100" >
+        <materialDesign:Flipper
+  Style="{StaticResource MaterialDesignCardFlipper}" >
+            <materialDesign:Flipper.FrontContent>
+                <Grid
+      Height="800"
+      Width="300">
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+          Height="260" />
+                        <RowDefinition
+          Height="*" />
+                    </Grid.RowDefinitions>
+                    <materialDesign:ColorZone
+        Mode="PrimaryLight"
+        VerticalAlignment="Stretch">
+                        <materialDesign:PackIcon
+          Kind="AccountCircle"
+          Height="128"
+          Width="128"
+          VerticalAlignment="Center"
+          HorizontalAlignment="Center" />
+                    </materialDesign:ColorZone>
+                    <StackPanel
+        Grid.Row="1"
+        HorizontalAlignment="Center"
+        Margin="0 50">
+                            <StackPanel Orientation="Horizontal" Margin="0 0 0 50">
+                                <TextBlock
+        Style="{StaticResource MaterialDesignHeadline6TextBlock}">
+      User Name : 
+                                </TextBlock>
+                                <TextBlock
+    Style="{StaticResource MaterialDesignSubtitle2TextBlock}" Margin="10 0" Name="username" VerticalAlignment="Center">
+
+                                </TextBlock>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Margin="0 0 0 50">
+                                <TextBlock
+        Style="{StaticResource MaterialDesignHeadline6TextBlock}">
+      Password :
+                                </TextBlock>
+                                <TextBlock
+    Style="{StaticResource MaterialDesignSubtitle2TextBlock}" Margin="10 0"  Name="password" VerticalAlignment="Center">
+
+                                </TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0 0 0 50">
+                                <TextBlock
+        Style="{StaticResource MaterialDesignHeadline6TextBlock}">
+      Phone :
+                                </TextBlock>
+                                <TextBlock
+    Style="{StaticResource MaterialDesignSubtitle2TextBlock}" Margin="10 0" Name="phone" VerticalAlignment="Center">
+
+                                </TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0 0 0 50">
+                                <TextBlock
+        Style="{StaticResource MaterialDesignHeadline6TextBlock}">
+      Age :
+                                </TextBlock>
+                                <TextBlock
+    Style="{StaticResource MaterialDesignSubtitle2TextBlock}" Margin="10 0" Name="age" VerticalAlignment="Center">
+
+                                </TextBlock>
+                            </StackPanel>
+                        
+                        <Button
+          Style="{StaticResource MaterialDesignFlatButton}"
+          Command="{x:Static materialDesign:Flipper.FlipCommand}"
+          Margin="0 4 0 0">
+                            EDIT
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Flipper.FrontContent>
+            <materialDesign:Flipper.BackContent>
+                <Grid
+      Height="800"
+      Width="300">
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+          Height="Auto" />
+                        <RowDefinition
+          Height="*" />
+                    </Grid.RowDefinitions>
+                    <materialDesign:ColorZone
+        Mode="Accent"
+        Padding="6">
+                        <StackPanel
+          Orientation="Horizontal">
+                            <Button
+            Style="{StaticResource MaterialDesignToolForegroundButton}"
+            Command="{x:Static materialDesign:Flipper.FlipCommand}"
+            HorizontalAlignment="Left">
+                                <materialDesign:PackIcon
+              Kind="ArrowLeft"
+              HorizontalAlignment="Right" />
+                            </Button>
+                            <TextBlock
+            Margin="8 0 0 0"
+            VerticalAlignment="Center">
+          EDIT USER
+                            </TextBlock>
+                        </StackPanel>
+                    </materialDesign:ColorZone>
+                    <Grid
+        Grid.Row="1"
+        Margin="0 6 0 0"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Top"
+        Width="172">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <TextBox
+          materialDesign:HintAssist.Hint="User name"
+          materialDesign:HintAssist.IsFloating="True"
+          Margin="0 12 0 30" Name="newUserName">
+                            
+                        </TextBox>
+                        <TextBox
+          Grid.Row="1"
+          materialDesign:HintAssist.Hint="Password"
+          materialDesign:HintAssist.IsFloating="True"
+          Margin="0 12 0 30" Name="newPassword">
+                           
+                        </TextBox>
+                        <TextBox
+          Grid.Row="2"
+          materialDesign:HintAssist.Hint="Age"
+          materialDesign:HintAssist.IsFloating="True"
+          Margin="0 12 0 30" Name="newAge">
+                           
+                        </TextBox>
+                        <TextBox
+          Grid.Row="3"
+          materialDesign:HintAssist.Hint="Phone"
+          materialDesign:HintAssist.IsFloating="True"
+          Margin="0 12 0 30" Name="newPhone">
+                           
+                        </TextBox>
+                            <Button
+                                Grid.Row="4"
+    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+    Width="100"
+    ToolTip="Resource name: MaterialDesignRaisedLightDarkButton">
+                             Save Edits
+                            </Button>
+
+                        </Grid>
+                </Grid>
+            </materialDesign:Flipper.BackContent>
+        </materialDesign:Flipper>
+        </DockPanel>
+        <!--    <StackPanel Margin="50 50">
+            
             <Border>
                 <StackPanel>
                     <TextBlock FontSize="30" FontWeight="Bold" Text="Personal Info : "></TextBlock>
                     <StackPanel Margin="75 0">
                         <DockPanel>
                             <TextBlock FontSize="20" FontWeight="Bold" Margin="15" Text="username : "></TextBlock>
-                            <TextBlock FontSize="15" Margin="20" Name="username"></TextBlock>
-                            <Button Style="{StaticResource MyButton}" Click="Button_username" HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Margin="20 0">
+                       <Button Style="{StaticResource MyButton}" Click="Button_username" HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Margin="20 0">
                                 <Image Source="images/edit.jpg" Width="30" />
                             </Button>
                         </DockPanel>
@@ -26,7 +188,7 @@
                         <DockPanel>
 
                             <TextBlock FontSize="20" FontWeight="Bold" Margin="15" Text="password : "></TextBlock>
-                            <TextBlock FontSize="15" Margin="20" Name="password"></TextBlock>
+                           
                             <Button Style="{StaticResource MyButton}" Click="Button_password" HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Margin="20 0">
                                 <Image Source="images/edit.jpg" Width="30" />
                             </Button>
@@ -34,14 +196,14 @@
                         <DockPanel>
 
                             <TextBlock FontSize="20" FontWeight="Bold" Margin="15" Text="phone : "></TextBlock>
-                            <TextBlock FontSize="15" Margin="20" Name="phone"></TextBlock>
+                           
                             <Button Style="{StaticResource MyButton}" Click="Button_phone" HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Margin="20 0">
                                 <Image Source="images/edit.jpg" Width="30" />
                             </Button>
                         </DockPanel>
                         <DockPanel>
                             <TextBlock FontSize="20" FontWeight="Bold" Margin="15" Text="age : "></TextBlock>
-                            <TextBlock FontSize="15" Margin="20"  Name="age"></TextBlock>
+                            
                             <Button Style="{StaticResource MyButton}" Click="Button_age" HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Margin="20 0">
                                 <Image Source="images/edit.jpg" Width="30" />
                             </Button>
@@ -51,5 +213,6 @@
                 </StackPanel>
             </Border>
         </StackPanel>
+    -->
     </StackPanel>
 </Window>

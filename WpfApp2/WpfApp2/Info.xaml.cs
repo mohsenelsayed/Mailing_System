@@ -21,7 +21,7 @@ namespace WpfApp2
 
     public partial class Info : Window
     {
-        public string connec = "Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True";
+        public string connec = "Data Source=DESKTOP-I9CKISJ;Initial Catalog=mailingsystem;Integrated Security=True";
         public string name;
         public users u = new users();
         public Info(string val)
@@ -89,14 +89,15 @@ namespace WpfApp2
 
             userreader.Close();
             con.Close();
-            username.Text = (u.name).ToString();
+            username.Text = newUserName.Text = (u.name).ToString();
             password.Text = "";
             foreach (char x in u.password.ToString())
             {
                 password.Text += '*';
             }
-            age.Text = (u.age).ToString();
-            phone.Text = (u.phone).ToString();
+            newPassword.Text = u.password.ToString();
+            age.Text = newAge.Text = (u.age).ToString();
+            phone.Text = newPhone.Text = (u.phone).ToString();
 
 
         }
