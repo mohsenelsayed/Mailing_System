@@ -124,7 +124,7 @@
         Margin="0 6 0 0"
         HorizontalAlignment="Center"
         VerticalAlignment="Top"
-        Width="172">
+        Width="300">
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition />
@@ -163,7 +163,8 @@
                                 Grid.Row="4"
     Style="{StaticResource MaterialDesignRaisedDarkButton}"
     Width="100"
-    ToolTip="Resource name: MaterialDesignRaisedLightDarkButton">
+    ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
+                                Click="Button_Update">
                              Save Edits
                             </Button>
 

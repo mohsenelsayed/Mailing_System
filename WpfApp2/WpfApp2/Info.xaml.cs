@@ -38,30 +38,7 @@ namespace WpfApp2
             mh.Show();
             Close();
         }
-
-        private void Button_username(object sender, RoutedEventArgs e)
-        {
-            changeUsername us = new changeUsername(u.name.ToString(), u.email.ToString());
-            us.Show();
-           us.Closed += child_Closed;
-
-        }
-
-        private void Button_password(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_phone(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_age(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        
      
         private void child_Closed(object sender, EventArgs e)
         {
@@ -100,6 +77,41 @@ namespace WpfApp2
             phone.Text = newPhone.Text = (u.phone).ToString();
 
 
+        }
+
+        private void Button_Update(object sender, RoutedEventArgs e)
+        {
+            u.name = newUserName.Text;
+            u.password = newPassword.Text;
+            u.age = newAge.Text;
+            u.phone = newPhone.Text;
+
+
+            SqlConnection con = new SqlConnection(connec);
+            con.Open();
+            string updateUserData = "updateall";
+            SqlCommand updateuser = new SqlCommand(updateUserData, con);
+            updateuser.CommandType = System.Data.CommandType.StoredProcedure;
+            updateuser.Parameters.Add(new SqlParameter("@email", u.email));
+            updateuser.Parameters.Add(new SqlParameter("@newpassword ", u.password));
+            updateuser.Parameters.Add(new SqlParameter("@newusername", u.name));
+            updateuser.Parameters.Add(new SqlParameter("@newphone", u.phone));
+            updateuser.Parameters.Add(new SqlParameter("@newage", u.age));
+            updateuser.ExecuteNonQuery();
+            con.Close();
+            showUpdate();
+        }
+        public void showUpdate()
+        {
+            username.Text = newUserName.Text = (u.name).ToString();
+            password.Text = "";
+            foreach (char x in u.password.ToString())
+            {
+                password.Text += '*';
+            }
+            newPassword.Text = u.password.ToString();
+            age.Text = newAge.Text = (u.age).ToString();
+            phone.Text = newPhone.Text = (u.phone).ToString();
         }
     }
     public class users
