@@ -26,7 +26,7 @@ namespace WpfApp2
 
     public partial class Info : Window
     {
-        public string connec = "Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True";
+        public string connec = "Data Source=DESKTOP-I9CKISJ ;Initial Catalog=mailingsystem;Integrated Security=True";
         public string name;
         public users u = new users();
         public Info(string val)

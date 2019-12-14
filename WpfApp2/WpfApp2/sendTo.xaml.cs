@@ -25,7 +25,7 @@ namespace WpfApp2
     public partial class sendTo : Window
     {
         public int nu;
-        public string connec = "Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True";
+        public string connec = "Data Source=DESKTOP-I9CKISJ ;Initial Catalog=mailingsystem;Integrated Security=True";
         public string str;
         public sendTo(String val)
         {

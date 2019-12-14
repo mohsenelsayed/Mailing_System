@@ -138,36 +138,49 @@
                                 <RowDefinition />
                                 <RowDefinition />
                                 <RowDefinition />
+                                <RowDefinition />
                             </Grid.RowDefinitions>
+                            <DockPanel Margin="0 8 0 30"  >
+                                <TextBlock
+        Style="{StaticResource MaterialDesignBody2TextBlock}">
+      Change Profile picture :
+                                </TextBlock>
+                                <Button 
+                                    Click="Button_browse"
+                                    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                                    Content="Upload " Width="80" />
+
+                            </DockPanel>
                             <TextBox
+                                Grid.Row="1"
           materialDesign:HintAssist.Hint="User name"
           materialDesign:HintAssist.IsFloating="True"
           Margin="0 12 0 30" Name="newUserName">
-
+                                
                             </TextBox>
                             <TextBox
-          Grid.Row="1"
+                                Grid.Row="2"
           materialDesign:HintAssist.Hint="Password"
           materialDesign:HintAssist.IsFloating="True"
           Margin="0 12 0 30" Name="newPassword">
-
                             </TextBox>
                             <TextBox
-          Grid.Row="2"
+        Grid.Row="3"
           materialDesign:HintAssist.Hint="Age"
           materialDesign:HintAssist.IsFloating="True"
           Margin="0 12 0 30" Name="newAge">
 
                             </TextBox>
                             <TextBox
-          Grid.Row="3"
+          Grid.Row="4"
           materialDesign:HintAssist.Hint="Phone"
           materialDesign:HintAssist.IsFloating="True"
           Margin="0 12 0 30" Name="newPhone">
 
                             </TextBox>
+                            
                             <Button
-                                Grid.Row="4"
+                                Grid.Row="5"
     Style="{StaticResource MaterialDesignRaisedDarkButton}"
     Width="100"
     ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
@@ -179,7 +192,6 @@
                     </Grid>
                 </materialDesign:Flipper.BackContent>
             </materialDesign:Flipper>
-            <Button Click="Button_browse" Content="Upload " Width="76"/>
         </DockPanel>
         <!--    <StackPanel Margin="50 50">
             
