@@ -93,6 +93,8 @@ namespace WpfApp2
 
             cmd.ExecuteNonQuery();
             con.Close();
+
+            
             Close();
         }
         private void Button_senddraft(object sender, RoutedEventArgs e)

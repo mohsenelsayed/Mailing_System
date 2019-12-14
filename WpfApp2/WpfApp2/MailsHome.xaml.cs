@@ -30,7 +30,7 @@ namespace WpfApp2
         public MailsHome()
         {
             InitializeComponent();
-
+            
         }
         public MailsHome(string val)
         {
@@ -84,9 +84,71 @@ namespace WpfApp2
             reader.Close();
             con.Close();
 
+            get_sent();
+            get_spam();
+            get_drafts();
+
             Button_inbox(new object(), new RoutedEventArgs());
 
 
+        }
+        private void get_inbox ()
+        {
+            SqlConnection con = new SqlConnection(connec);
+            con.Open();
+            SqlCommand num = new SqlCommand("msgnum", con);
+            num.CommandType = CommandType.StoredProcedure;
+            num.Parameters.Add(new SqlParameter("@email", str));
+            
+
+               int count = Convert.ToInt32(num.ExecuteScalar());
+            con.Close();
+            
+            btnInbox.Content = "Inbox (" + count + ")";
+        }
+
+        private void get_drafts()
+        {
+            SqlConnection con = new SqlConnection(connec);
+            con.Open();
+
+
+
+            SqlCommand num = new SqlCommand("msgdraftnum", con);
+            num.CommandType = CommandType.StoredProcedure;
+            num.Parameters.Add(new SqlParameter("@email", str));
+            
+            int count = Convert.ToInt32(num.ExecuteScalar());
+            con.Close();
+           btnDraft.Content = "Drafts (" + count + ")";
+        }
+
+        public void get_sent()
+        {
+            SqlConnection con = new SqlConnection(connec);
+            con.Open();
+
+
+            SqlCommand num = new SqlCommand("msgnumsent", con);
+            num.CommandType = CommandType.StoredProcedure;
+            num.Parameters.Add(new SqlParameter("@email", str));
+            int count = Convert.ToInt32(num.ExecuteScalar());
+          
+            con.Close();
+          btnSent.Content = "Sent (" + count + ")";
+        }
+        private void get_spam()
+        {
+            SqlConnection con = new SqlConnection(connec);
+            con.Open();
+
+
+            SqlCommand num = new SqlCommand("msgspamnum", con);
+            num.CommandType = CommandType.StoredProcedure;
+            num.Parameters.Add(new SqlParameter("@email", str));
+            int count = Convert.ToInt32(num.ExecuteScalar());
+            con.Close();
+            btnSpam.Content = "Spam (" + count + ")";
         }
 
         private void Button_New(object sender, RoutedEventArgs e)
@@ -99,19 +161,11 @@ namespace WpfApp2
             contmsg.Visibility = Visibility.Hidden;
 
 
+             get_inbox();
+            
 
             SqlConnection con = new SqlConnection(connec);
             con.Open();
-
-
-            SqlCommand num = new SqlCommand("msgnum", con);
-            num.CommandType = CommandType.StoredProcedure;
-            num.Parameters.Add(new SqlParameter("@email", str));
-            int count = Convert.ToInt32(num.ExecuteScalar());
-            msgs.Text = "messages number is " + count;
-
-
-
 
             SqlCommand cmd = new SqlCommand("msgpro", con);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -127,9 +181,9 @@ namespace WpfApp2
             dg.Columns[5].Visibility = Visibility.Hidden;
             dg.Columns[6].Visibility = Visibility.Hidden;
             dg.Columns[7].Visibility = Visibility.Hidden;
-
-
             con.Close();
+
+
             lastfun = "inbox";
         }
 
@@ -137,18 +191,14 @@ namespace WpfApp2
         {
             contmsg.Visibility = Visibility.Hidden;
 
+             get_sent();
+           
+
             SqlConnection con = new SqlConnection(connec);
             con.Open();
 
 
-            SqlCommand num = new SqlCommand("msgnumsent", con);
-            num.CommandType = CommandType.StoredProcedure;
-            num.Parameters.Add(new SqlParameter("@email", str));
-            int count = Convert.ToInt32(num.ExecuteScalar());
-            msgs.Text = "messages number is " + count;
-
-
-
+           
 
             SqlCommand cmd = new SqlCommand("msgsent", con);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -171,17 +221,11 @@ namespace WpfApp2
         {
             contmsg.Visibility = Visibility.Visible;
 
+            get_drafts();
+           
+
             SqlConnection con = new SqlConnection(connec);
             con.Open();
-
-
-
-            SqlCommand num = new SqlCommand("msgdraftnum", con);
-            num.CommandType = CommandType.StoredProcedure;
-            num.Parameters.Add(new SqlParameter("@email", str));
-            int count = Convert.ToInt32(num.ExecuteScalar());
-            msgs.Text = "messages number is " + count;
-
 
             SqlCommand cmd = new SqlCommand("msgdraft", con);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -204,15 +248,14 @@ namespace WpfApp2
         {
             contmsg.Visibility = Visibility.Hidden;
 
+            get_spam();
+          
+
             SqlConnection con = new SqlConnection(connec);
             con.Open();
 
 
-            SqlCommand num = new SqlCommand("msgspamnum", con);
-            num.CommandType = CommandType.StoredProcedure;
-            num.Parameters.Add(new SqlParameter("@email", str));
-            int count = Convert.ToInt32(num.ExecuteScalar());
-            msgs.Text = "messages number is " + count;
+           
 
 
 
