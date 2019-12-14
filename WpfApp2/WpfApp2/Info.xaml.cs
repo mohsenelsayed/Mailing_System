@@ -12,6 +12,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Win32;
+using System.IO;
+using System.Windows.Navigation;
+using System.Data;
+using System.Drawing.Imaging;
 
 namespace WpfApp2
 {
@@ -21,7 +26,7 @@ namespace WpfApp2
 
     public partial class Info : Window
     {
-        public string connec = "Data Source=DESKTOP-I9CKISJ ;Initial Catalog=mailingsystem;Integrated Security=True";
+        public string connec = "Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True";
         public string name;
         public users u = new users();
         public Info(string val)
@@ -65,7 +70,6 @@ namespace WpfApp2
             u.email = name;
 
             userreader.Close();
-            con.Close();
             username.Text = newUserName.Text = (u.name).ToString();
             password.Text = "";
             foreach (char x in u.password.ToString())
@@ -76,6 +80,42 @@ namespace WpfApp2
             age.Text = newAge.Text = (u.age).ToString();
             phone.Text = newPhone.Text = (u.phone).ToString();
 
+
+
+            SqlCommand sc = new SqlCommand("select imgdata from Users where email=@email", con);
+            sc.CommandType = System.Data.CommandType.Text;
+            sc.Parameters.Add(new SqlParameter("@email", name));
+            SqlDataReader reader = sc.ExecuteReader();
+            while (reader.Read())
+            {
+                if (String.IsNullOrWhiteSpace(reader["imgdata"].ToString()))
+                    return;
+
+                byte[] data = (byte[])reader["imgdata"];
+                MemoryStream strm = new MemoryStream();
+                strm.Write(data, 0, data.Length);
+                strm.Position = 0;
+                System.Drawing.Image img = System.Drawing.Image.FromStream(strm);
+                BitmapImage bi = new BitmapImage();
+
+                bi.BeginInit();
+
+                MemoryStream ms = new MemoryStream();
+
+                img.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+
+                ms.Seek(0, SeekOrigin.Begin);
+
+                bi.StreamSource = ms;
+
+                bi.EndInit();
+
+                im.Source = bi;
+
+
+            }
+            reader.Close();
+            con.Close();
 
         }
 
@@ -112,6 +152,36 @@ namespace WpfApp2
             newPassword.Text = u.password.ToString();
             age.Text = newAge.Text = (u.age).ToString();
             phone.Text = newPhone.Text = (u.phone).ToString();
+        }
+
+        private void Button_browse(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Title = "Select a picture";
+            dlg.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
+              "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+              "Portable Network Graphic (*.png)|*.png";
+            if (dlg.ShowDialog() == true)
+            {
+                im.Source = new BitmapImage(new Uri(dlg.FileName));
+            }
+            FileStream fs = new FileStream(dlg.FileName, FileMode.Open,
+             FileAccess.Read);
+            byte[] data = new byte[fs.Length];
+            fs.Read(data, 0, System.Convert.ToInt32(fs.Length));
+            fs.Close();
+
+            SqlConnection con = new SqlConnection(connec);
+            con.Open();
+            SqlCommand sc = new SqlCommand("update Users set imgdata=@p,imgname=@n where email=@email", con);
+            sc.CommandType = System.Data.CommandType.Text;
+
+            sc.Parameters.AddWithValue("@email", name);
+
+            sc.Parameters.AddWithValue("@p", data);
+            sc.Parameters.AddWithValue("@n", "pic");
+            sc.ExecuteNonQuery();
+
         }
     }
     public class users

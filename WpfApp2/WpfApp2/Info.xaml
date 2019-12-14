@@ -12,36 +12,43 @@
             <Image Source="images/back.png" />
         </Button>
         <DockPanel Width="700" Height="auto" Margin="100" >
-        <materialDesign:Flipper
+            <materialDesign:Flipper
   Style="{StaticResource MaterialDesignCardFlipper}" >
-            <materialDesign:Flipper.FrontContent>
-                <Grid
+                <materialDesign:Flipper.FrontContent>
+                    <Grid
       Height="800"
       Width="300">
-                    <Grid.RowDefinitions>
-                        <RowDefinition
+                        <Grid.RowDefinitions>
+                            <RowDefinition
           Height="260" />
-                        <RowDefinition
+                            <RowDefinition
           Height="*" />
-                    </Grid.RowDefinitions>
-                    <materialDesign:ColorZone
+                        </Grid.RowDefinitions>
+                        <materialDesign:ColorZone
         Mode="PrimaryLight"
         VerticalAlignment="Stretch">
-                        <Image
-          Source=""
+                            <materialDesign:PackIcon
+          Kind="AccountCircle"
           Height="128"
           Width="128"
           VerticalAlignment="Center"
           HorizontalAlignment="Center" />
-                    </materialDesign:ColorZone>
-                    <StackPanel
+
+                        </materialDesign:ColorZone>
+                        <Image  Name="im"
+          Source=""
+          Height="150"
+          Width="150"
+          VerticalAlignment="Center"
+          HorizontalAlignment="Center" />
+                        <StackPanel
         Grid.Row="1"
         HorizontalAlignment="Center"
         Margin="0 50">
                             <StackPanel Orientation="Horizontal" Margin="0 0 0 50">
                                 <TextBlock
         Style="{StaticResource MaterialDesignHeadline6TextBlock}">
-      User Name : 
+      User Name :
                                 </TextBlock>
                                 <TextBlock
     Style="{StaticResource MaterialDesignSubtitle2TextBlock}" Margin="10 0" Name="username" VerticalAlignment="Center">
@@ -79,99 +86,100 @@
 
                                 </TextBlock>
                             </StackPanel>
-                        
-                        <Button
+
+                            <Button
           Style="{StaticResource MaterialDesignFlatButton}"
           Command="{x:Static materialDesign:Flipper.FlipCommand}"
           Margin="0 4 0 0">
-                            EDIT
-                        </Button>
-                    </StackPanel>
-                </Grid>
-            </materialDesign:Flipper.FrontContent>
-            <materialDesign:Flipper.BackContent>
-                <Grid
+                                EDIT
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </materialDesign:Flipper.FrontContent>
+                <materialDesign:Flipper.BackContent>
+                    <Grid
       Height="800"
       Width="300">
-                    <Grid.RowDefinitions>
-                        <RowDefinition
+                        <Grid.RowDefinitions>
+                            <RowDefinition
           Height="Auto" />
-                        <RowDefinition
+                            <RowDefinition
           Height="*" />
-                    </Grid.RowDefinitions>
-                    <materialDesign:ColorZone
+                        </Grid.RowDefinitions>
+                        <materialDesign:ColorZone
         Mode="Accent"
         Padding="6">
-                        <StackPanel
+                            <StackPanel
           Orientation="Horizontal">
-                            <Button
+                                <Button
             Style="{StaticResource MaterialDesignToolForegroundButton}"
             Command="{x:Static materialDesign:Flipper.FlipCommand}"
             HorizontalAlignment="Left">
-                                <materialDesign:PackIcon
+                                    <materialDesign:PackIcon
               Kind="ArrowLeft"
               HorizontalAlignment="Right" />
-                            </Button>
-                            <TextBlock
+                                </Button>
+                                <TextBlock
             Margin="8 0 0 0"
             VerticalAlignment="Center">
           EDIT USER
-                            </TextBlock>
-                        </StackPanel>
-                    </materialDesign:ColorZone>
-                    <Grid
+                                </TextBlock>
+                            </StackPanel>
+                        </materialDesign:ColorZone>
+                        <Grid
         Grid.Row="1"
         Margin="0 6 0 0"
         HorizontalAlignment="Center"
         VerticalAlignment="Top"
         Width="300">
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <TextBox
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <TextBox
           materialDesign:HintAssist.Hint="User name"
           materialDesign:HintAssist.IsFloating="True"
           Margin="0 12 0 30" Name="newUserName">
-                            
-                        </TextBox>
-                        <TextBox
+
+                            </TextBox>
+                            <TextBox
           Grid.Row="1"
           materialDesign:HintAssist.Hint="Password"
           materialDesign:HintAssist.IsFloating="True"
           Margin="0 12 0 30" Name="newPassword">
-                           
-                        </TextBox>
-                        <TextBox
+
+                            </TextBox>
+                            <TextBox
           Grid.Row="2"
           materialDesign:HintAssist.Hint="Age"
           materialDesign:HintAssist.IsFloating="True"
           Margin="0 12 0 30" Name="newAge">
-                           
-                        </TextBox>
-                        <TextBox
+
+                            </TextBox>
+                            <TextBox
           Grid.Row="3"
           materialDesign:HintAssist.Hint="Phone"
           materialDesign:HintAssist.IsFloating="True"
           Margin="0 12 0 30" Name="newPhone">
-                           
-                        </TextBox>
+
+                            </TextBox>
                             <Button
                                 Grid.Row="4"
     Style="{StaticResource MaterialDesignRaisedDarkButton}"
     Width="100"
     ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
                                 Click="Button_Update">
-                             Save Edits
+                                Save Edits
                             </Button>
 
                         </Grid>
-                </Grid>
-            </materialDesign:Flipper.BackContent>
-        </materialDesign:Flipper>
+                    </Grid>
+                </materialDesign:Flipper.BackContent>
+            </materialDesign:Flipper>
+            <Button Click="Button_browse" Content="Upload " Width="76"/>
         </DockPanel>
         <!--    <StackPanel Margin="50 50">
             
