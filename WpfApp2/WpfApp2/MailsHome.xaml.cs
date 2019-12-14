@@ -14,6 +14,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Media;
 using System.Configuration;
+using System.IO;
 
 namespace WpfApp2
 {
@@ -45,8 +46,43 @@ namespace WpfApp2
             while (userreader.Read())
                 usernamewpf.Text = "Welcome back , " + (userreader["username"].ToString()); ;
             userreader.Close();
-            con.Close();
 
+            
+
+            SqlCommand sc = new SqlCommand("select imgdata from Users where email=@email", con);
+            sc.CommandType = System.Data.CommandType.Text;
+            sc.Parameters.Add(new SqlParameter("@email", str));
+            SqlDataReader reader = sc.ExecuteReader();
+            while (reader.Read())
+            {
+                if (String.IsNullOrWhiteSpace(reader["imgdata"].ToString()))
+                    return;
+
+                byte[] data = (byte[])reader["imgdata"];
+                MemoryStream strm = new MemoryStream();
+                strm.Write(data, 0, data.Length);
+                strm.Position = 0;
+                System.Drawing.Image img = System.Drawing.Image.FromStream(strm);
+                BitmapImage bi = new BitmapImage();
+
+                bi.BeginInit();
+
+                MemoryStream ms = new MemoryStream();
+
+                img.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+
+                ms.Seek(0, SeekOrigin.Begin);
+
+                bi.StreamSource = ms;
+
+                bi.EndInit();
+
+                im.Source = bi;
+
+
+            }
+            reader.Close();
+            con.Close();
 
             Button_inbox(new object(), new RoutedEventArgs());
 
