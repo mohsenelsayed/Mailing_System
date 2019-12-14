@@ -290,7 +290,9 @@ namespace WpfApp2
 
         private void Button_Reply(object sender, RoutedEventArgs e)
         {
-
+            DataRowView row = dg.SelectedItem as DataRowView;
+            sendTo st = new sendTo(str,row.Row.ItemArray[3].ToString());
+            st.Show();
         }
     }
 }

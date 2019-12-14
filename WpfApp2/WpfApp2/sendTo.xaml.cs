@@ -34,6 +34,15 @@ namespace WpfApp2
             senddraft.Visibility = Visibility.Hidden;
 
         }
+        public sendTo(String val,string to)
+        {
+            InitializeComponent();
+            str = val;
+            towpf.Text = to;
+            senddraft.Visibility = Visibility.Hidden;
+
+        }
+
         public sendTo(String toemail,string subj,string desc,int num)
         {
             InitializeComponent();

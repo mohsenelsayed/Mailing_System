@@ -173,13 +173,12 @@ namespace WpfApp2
 
             SqlConnection con = new SqlConnection(connec);
             con.Open();
-            SqlCommand sc = new SqlCommand("update Users set imgdata=@p,imgname=@n where email=@email", con);
+            SqlCommand sc = new SqlCommand("update Users set imgdata=@p where email=@email", con);
             sc.CommandType = System.Data.CommandType.Text;
 
             sc.Parameters.AddWithValue("@email", name);
 
             sc.Parameters.AddWithValue("@p", data);
-            sc.Parameters.AddWithValue("@n", "pic");
             sc.ExecuteNonQuery();
 
         }
