@@ -27,15 +27,24 @@ namespace WpfApp2
 
         public string str;
         public string lastfun;
-        public MailsHome()
-        {
-            InitializeComponent();
-            
-        }
+ 
         public MailsHome(string val)
         {
             InitializeComponent();
             str = val;
+
+            shownameimg();
+            get_sent();
+            get_spam();
+            get_drafts();
+
+            Button_inbox(new object(), new RoutedEventArgs());
+
+
+        }
+
+        public void shownameimg ()
+        {
             SqlConnection con = new SqlConnection(connec);
             con.Open();
 
@@ -47,7 +56,7 @@ namespace WpfApp2
                 usernamewpf.Text = "Welcome back , " + (userreader["username"].ToString()); ;
             userreader.Close();
 
-            
+
 
             SqlCommand sc = new SqlCommand("select imgdata from Users where email=@email", con);
             sc.CommandType = System.Data.CommandType.Text;
@@ -83,14 +92,6 @@ namespace WpfApp2
             }
             reader.Close();
             con.Close();
-
-            get_sent();
-            get_spam();
-            get_drafts();
-
-            Button_inbox(new object(), new RoutedEventArgs());
-
-
         }
         private void get_inbox ()
         {
@@ -136,6 +137,8 @@ namespace WpfApp2
           
             con.Close();
           btnSent.Content = "Sent (" + count + ")";
+
+
         }
         private void get_spam()
         {
@@ -155,7 +158,43 @@ namespace WpfApp2
         {
             sendTo st = new sendTo(str);
             st.Show();
+
+            st.Closed += child_Closed;
+
         }
+
+        private void child_Closed(object sender, EventArgs e)
+        {
+            get_sent();
+            get_spam();
+            get_drafts();
+
+            if (lastfun == "inbox")
+            {
+                Button_inbox(new object(), new RoutedEventArgs());
+            }
+
+
+
+            else if (lastfun == "spam")
+            {
+                Button_spam(new object(), new RoutedEventArgs());
+
+            }
+            else if (lastfun == "sent")
+            {
+                Button_Sent(new object(), new RoutedEventArgs());
+
+
+            }
+            else
+            {
+                Button_draft(new object(), new RoutedEventArgs());
+
+
+            }
+        }
+
         private void Button_inbox(object sender, RoutedEventArgs e)
         {
             contmsg.Visibility = Visibility.Hidden;
