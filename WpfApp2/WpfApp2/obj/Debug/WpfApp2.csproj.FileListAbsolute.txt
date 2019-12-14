@@ -273,9 +273,7 @@ C:\Users\RayXerxes\Desktop\New folder (3)\Mailing_System\WpfApp2\WpfApp2\obj\Deb
 C:\Users\RayXerxes\Desktop\New folder (3)\Mailing_System\WpfApp2\WpfApp2\obj\Debug\WpfApp2.csproj.CoreCompileInputs.cache
 C:\Users\RayXerxes\Desktop\New folder (3)\Mailing_System\WpfApp2\WpfApp2\obj\Debug\WpfApp2.exe
 C:\Users\RayXerxes\Desktop\New folder (3)\Mailing_System\WpfApp2\WpfApp2\obj\Debug\WpfApp2.pdb
-C:\Users\RayXerxes\Desktop\New folder (3)\Mailing_System\WpfApp2\WpfApp2\obj\Debug\changeUsername.g.cs
 C:\Users\RayXerxes\Desktop\New folder (3)\Mailing_System\WpfApp2\WpfApp2\obj\Debug\Info.g.cs
-C:\Users\RayXerxes\Desktop\New folder (3)\Mailing_System\WpfApp2\WpfApp2\obj\Debug\changeUsername.baml
 C:\Users\RayXerxes\Desktop\New folder (3)\Mailing_System\WpfApp2\WpfApp2\obj\Debug\Info.baml
 D:\mail4\Mailing_System\WpfApp2\WpfApp2\bin\Debug\WpfApp2.exe.config
 D:\mail4\Mailing_System\WpfApp2\WpfApp2\bin\Debug\WpfApp2.exe
@@ -395,3 +393,9 @@ C:\Users\RayXerxes\Desktop\New folder\Mailing_System\WpfApp2\WpfApp2\obj\Debug\W
 C:\Users\RayXerxes\Desktop\New folder\Mailing_System\WpfApp2\WpfApp2\obj\Debug\WpfApp2.csproj.CopyComplete
 C:\Users\RayXerxes\Desktop\New folder\Mailing_System\WpfApp2\WpfApp2\obj\Debug\WpfApp2.exe
 C:\Users\RayXerxes\Desktop\New folder\Mailing_System\WpfApp2\WpfApp2\obj\Debug\WpfApp2.pdb
+C:\Users\RayXerxes\Desktop\New folder (3)\Mailing_System\WpfApp2\WpfApp2\bin\Debug\MaterialDesignColors.dll
+C:\Users\RayXerxes\Desktop\New folder (3)\Mailing_System\WpfApp2\WpfApp2\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\RayXerxes\Desktop\New folder (3)\Mailing_System\WpfApp2\WpfApp2\bin\Debug\MaterialDesignColors.pdb
+C:\Users\RayXerxes\Desktop\New folder (3)\Mailing_System\WpfApp2\WpfApp2\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\RayXerxes\Desktop\New folder (3)\Mailing_System\WpfApp2\WpfApp2\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\RayXerxes\Desktop\New folder (3)\Mailing_System\WpfApp2\WpfApp2\obj\Debug\WpfApp2.csproj.CopyComplete

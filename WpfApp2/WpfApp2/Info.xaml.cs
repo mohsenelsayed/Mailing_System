@@ -26,8 +26,11 @@ namespace WpfApp2
 
     public partial class Info : Window
     {
-        public string connec = "Data Source=DESKTOP-I9CKISJ ;Initial Catalog=mailingsystem;Integrated Security=True";
+        public bool check = false;
+        public string connec = "Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True";
         public string name;
+        public OpenFileDialog dlg = new OpenFileDialog();
+
         public users u = new users();
         public Info(string val)
         {
@@ -35,7 +38,6 @@ namespace WpfApp2
             name = val;
             showdata();
         }
-        public event System.ComponentModel.CancelEventHandler Closing;
 
         private void back_welcome(object sender, RoutedEventArgs e)
         {
@@ -43,8 +45,8 @@ namespace WpfApp2
             mh.Show();
             Close();
         }
-        
-     
+
+
         private void child_Closed(object sender, EventArgs e)
         {
             showdata();
@@ -76,7 +78,6 @@ namespace WpfApp2
             {
                 password.Text += '*';
             }
-            newPassword.Text = u.password.ToString();
             age.Text = newAge.Text = (u.age).ToString();
             phone.Text = newPhone.Text = (u.phone).ToString();
 
@@ -121,8 +122,71 @@ namespace WpfApp2
 
         private void Button_Update(object sender, RoutedEventArgs e)
         {
+
+            if (String.IsNullOrWhiteSpace(newUserName.Text))
+            {
+                MessageBox.Show("your username cant be empty pls fill it ");
+                return;
+            }
+            if (String.IsNullOrWhiteSpace(newPhone.Text))
+            {
+                MessageBox.Show("your phone cant be empty pls fill it ");
+                return;
+            }
+
+            int z = 0;
+            if (!int.TryParse(newPhone.Text, out z))
+            {
+
+                MessageBox.Show("Pls enter a number in the phone box ");
+                return;
+            }
+
+            if (newPhone.Text.Length != 11)
+            {
+
+                MessageBox.Show("Pls enter a correct number ");
+                return;
+            }
+            if (String.IsNullOrWhiteSpace(newAge.Text))
+            {
+                MessageBox.Show("pls fill the age box ");
+                return;
+            }
+            int x = 0;
+            if (!int.TryParse(newAge.Text, out x))
+            {
+
+                MessageBox.Show("Pls enter a number in the age box ");
+                return;
+            }
+            x = Convert.ToInt32(newAge.Text);
+
+
+            if (!(x >= 6 && x <= 100))
+            {
+                MessageBox.Show("Pls enter a number between 6 and 100 in the age box ");
+                return;
+            }
+
+            if (newPassword.Password.Length < 5 && !String.IsNullOrWhiteSpace(newPassword.Password))
+            {
+
+                MessageBox.Show("your password should be more than 5 characters or numbers");
+                return;
+            }
+
+
+
             u.name = newUserName.Text;
-            u.password = newPassword.Text;
+
+            if (!String.IsNullOrWhiteSpace(newPassword.Password))
+            {
+                u.password = newPassword.Password;
+
+            }
+
+
             u.age = newAge.Text;
             u.phone = newPhone.Text;
 
@@ -133,11 +197,31 @@ namespace WpfApp2
             SqlCommand updateuser = new SqlCommand(updateUserData, con);
             updateuser.CommandType = System.Data.CommandType.StoredProcedure;
             updateuser.Parameters.Add(new SqlParameter("@email", u.email));
+
             updateuser.Parameters.Add(new SqlParameter("@newpassword ", u.password));
             updateuser.Parameters.Add(new SqlParameter("@newusername", u.name));
             updateuser.Parameters.Add(new SqlParameter("@newphone", u.phone));
             updateuser.Parameters.Add(new SqlParameter("@newage", u.age));
             updateuser.ExecuteNonQuery();
+            if (check)
+            {
+                im.Source = new BitmapImage(new Uri(dlg.FileName));
+                FileStream fs = new FileStream(dlg.FileName, FileMode.Open,
+         FileAccess.Read);
+                byte[] data = new byte[fs.Length];
+                fs.Read(data, 0, System.Convert.ToInt32(fs.Length));
+                fs.Close();
+
+                SqlCommand sc = new SqlCommand("update Users set imgdata=@p where email=@email", con);
+                sc.CommandType = System.Data.CommandType.Text;
+
+                sc.Parameters.AddWithValue("@email", name);
+
+                sc.Parameters.AddWithValue("@p", data);
+                sc.ExecuteNonQuery();
+            }
+
+            newPassword.Password = "";
             con.Close();
             showUpdate();
         }
@@ -149,46 +233,29 @@ namespace WpfApp2
             {
                 password.Text += '*';
             }
-            newPassword.Text = u.password.ToString();
+
             age.Text = newAge.Text = (u.age).ToString();
             phone.Text = newPhone.Text = (u.phone).ToString();
         }
 
         private void Button_browse(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog dlg = new OpenFileDialog();
             dlg.Title = "Select a picture";
             dlg.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
               "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
               "Portable Network Graphic (*.png)|*.png";
             if (dlg.ShowDialog() == true)
             {
-                im.Source = new BitmapImage(new Uri(dlg.FileName));
+                check = true;
             }
-            FileStream fs = new FileStream(dlg.FileName, FileMode.Open,
-             FileAccess.Read);
-            byte[] data = new byte[fs.Length];
-            fs.Read(data, 0, System.Convert.ToInt32(fs.Length));
-            fs.Close();
-
-            SqlConnection con = new SqlConnection(connec);
-            con.Open();
-            SqlCommand sc = new SqlCommand("update Users set imgdata=@p where email=@email", con);
-            sc.CommandType = System.Data.CommandType.Text;
-
-            sc.Parameters.AddWithValue("@email", name);
-
-            sc.Parameters.AddWithValue("@p", data);
-            sc.ExecuteNonQuery();
-
         }
-    }
-    public class users
-    {
-        public object name { get; internal set; }
-        public object email { get; internal set; }
-        public object password { get; internal set; }
-        public object age { get; internal set; }
-        public object phone { get; internal set; }
+        public class users
+        {
+            public object name { get; internal set; }
+            public object email { get; internal set; }
+            public object password { get; internal set; }
+            public object age { get; internal set; }
+            public object phone { get; internal set; }
+        }
     }
 }

@@ -23,7 +23,7 @@ namespace WpfApp2
     /// </summary>
     public partial class MailsHome : Window
     {
-        public string connec = "Data Source=DESKTOP-I9CKISJ ;Initial Catalog=mailingsystem;Integrated Security=True";
+        public string connec = "Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True";
 
         public string str;
         public string lastfun;
