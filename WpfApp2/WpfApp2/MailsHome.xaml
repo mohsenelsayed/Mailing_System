@@ -67,7 +67,7 @@
 
         </StackPanel>
 
-        <DataGrid Name="dg"  SelectedItem="{Binding MsgID}" Grid.Column="1" Grid.Row="1" ColumnWidth="150"  CanUserResizeColumns="False" IsReadOnly="True" AutoGenerateColumns="False">
+        <DataGrid Name="dg1"  SelectedItem="{Binding MsgID}" Grid.Column="1" Grid.Row="1" ColumnWidth="150"  CanUserResizeColumns="False" IsReadOnly="True" AutoGenerateColumns="False">
 
 
 
@@ -167,7 +167,108 @@
                 </DataTemplate>
             </DataGrid.RowDetailsTemplate>
         </DataGrid>
-        <TextBlock Name="msgs" HorizontalAlignment="Left" Margin="178,600,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Grid.Row="1" Height="38" Width="90" />
+
+
+        <DataGrid Name="dg2" Visibility="Collapsed" SelectedItem="{Binding MsgID}" Grid.Column="1" Grid.Row="1" ColumnWidth="150"  CanUserResizeColumns="False" IsReadOnly="True" AutoGenerateColumns="False">
+
+
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding username}" Header="From"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding username}" Header="To"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Subject}" Header="Subject"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Msgdate}" Header="Date" Width="200" SortDirection="Descending"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding FromEmail}" Header="FromEmail"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding ToEmail}" Header="ToEmail"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Description}" Header="Description"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding MsgID}" Header="Description"></DataGridTextColumn>
+            </DataGrid.Columns>
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <materialDesign1:Card
+            Background="{DynamicResource MaterialDesignBackground}">
+                        <StackPanel>
+                            <Expander
+      HorizontalAlignment="Stretch"
+      >
+                                <Expander.Header>
+
+                                    <DockPanel>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto" ></RowDefinition>
+                                                <RowDefinition Height="auto"></RowDefinition>
+                                                <RowDefinition Height="auto"></RowDefinition>
+                                                <RowDefinition Height="auto"></RowDefinition>
+
+
+
+
+
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Username : " FontWeight="Bold" Grid.Column="0" Grid.Row="0" Margin="2 3"></TextBlock>
+                                            <TextBlock Text="{Binding username }" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" Margin="0 3" ></TextBlock>
+
+                                            <TextBlock Text="Email : " FontWeight="Bold" Grid.Column="0" Grid.Row="1" Margin="2 3"></TextBlock>
+                                            <TextBlock Text="{Binding FromEmail }"  Grid.Column="1" Grid.Row="1" Margin="0 3" ></TextBlock>
+
+                                            <TextBlock Text="Email : " FontWeight="Bold" Grid.Column="0" Grid.Row="1" Margin="2 3" ></TextBlock>
+                                            <TextBlock Text="{Binding ToEmail }" Grid.Column="1" Grid.Row="1" Margin="0 3"></TextBlock>
+
+                                            <TextBlock Text="Subject : " FontWeight="Bold" Grid.Column="0" Grid.Row="2" Margin="2 3" ></TextBlock>
+                                            <TextBlock Text="{Binding Subject }" Grid.Column="1" Grid.Row="2" Margin="0 3"></TextBlock>
+
+                                            <TextBlock Text="Date : " FontWeight="Bold" Grid.Column="0" Grid.Row="3" Margin="2 3" ></TextBlock>
+                                            <TextBlock Text="{Binding Msgdate }" Grid.Column="1" Grid.Row="3" Margin="0 3"></TextBlock>
+
+
+
+                                        </Grid>
+                                    </DockPanel>
+
+                                </Expander.Header>
+                                <StackPanel
+        Orientation="Vertical"
+        TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+        Margin="24,8,24,16">
+
+                                    <DockPanel>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"></RowDefinition>
+                                                <RowDefinition Height="*"></RowDefinition>
+                                            </Grid.RowDefinitions>
+
+
+
+                                            <TextBlock Text="{Binding Description }" FontFamily="Comic Sans MS" FontSize="20" Grid.ColumnSpan="2"  TextWrapping="Wrap" Width="700"></TextBlock>
+
+                                            <Button Name="deletemsg" Click="Button_Delete" Margin="0 10" Width="120" HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.Row="1">Delete</Button>
+                                            
+
+
+
+
+                                        </Grid>
+                                    </DockPanel>
+                                </StackPanel>
+                            </Expander>
+
+
+                        </StackPanel>
+                    </materialDesign1:Card>
+
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
+        </DataGrid>
 
     </Grid>
 </Window>

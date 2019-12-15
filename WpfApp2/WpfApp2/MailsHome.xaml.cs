@@ -199,6 +199,8 @@ namespace WpfApp2
         {
             contmsg.Visibility = Visibility.Hidden;
 
+            dg1.Visibility = Visibility.Visible;
+            dg2.Visibility = Visibility.Collapsed;
 
              get_inbox();
             
@@ -213,13 +215,13 @@ namespace WpfApp2
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable("Mails");
             da.Fill(dt);
-            dg.ItemsSource = dt.DefaultView;
-            dg.Columns[0].Visibility = Visibility.Visible;
-            dg.Columns[1].Visibility = Visibility.Hidden;
-            dg.Columns[4].Visibility = Visibility.Hidden;
-            dg.Columns[5].Visibility = Visibility.Hidden;
-            dg.Columns[6].Visibility = Visibility.Hidden;
-            dg.Columns[7].Visibility = Visibility.Hidden;
+            dg1.ItemsSource = dt.DefaultView;
+            dg1.Columns[0].Visibility = Visibility.Visible;
+            dg1.Columns[1].Visibility = Visibility.Hidden;
+            dg1.Columns[4].Visibility = Visibility.Hidden;
+            dg1.Columns[5].Visibility = Visibility.Hidden;
+            dg1.Columns[6].Visibility = Visibility.Hidden;
+            dg1.Columns[7].Visibility = Visibility.Hidden;
             con.Close();
 
 
@@ -229,7 +231,9 @@ namespace WpfApp2
         private void Button_Sent(object sender, RoutedEventArgs e)
         {
             contmsg.Visibility = Visibility.Hidden;
-            
+            dg1.Visibility = Visibility.Collapsed;
+            dg2.Visibility = Visibility.Visible;
+
             get_sent();
            
 
@@ -246,9 +250,9 @@ namespace WpfApp2
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable("Mails");
             da.Fill(dt);
-            dg.ItemsSource = dt.DefaultView;
-            dg.Columns[1].Visibility = Visibility.Visible;
-            dg.Columns[0].Visibility = Visibility.Hidden;
+            dg2.ItemsSource = dt.DefaultView;
+            dg2.Columns[1].Visibility = Visibility.Visible;
+            dg2.Columns[0].Visibility = Visibility.Hidden;
           
 
             con.Close();
@@ -259,7 +263,9 @@ namespace WpfApp2
         private void Button_draft(object sender, RoutedEventArgs e)
         {
             contmsg.Visibility = Visibility.Visible;
-            
+            dg1.Visibility = Visibility.Collapsed;
+            dg2.Visibility = Visibility.Visible;
+
             get_drafts();
            
 
@@ -273,9 +279,9 @@ namespace WpfApp2
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable("Mails");
             da.Fill(dt);
-            dg.ItemsSource = dt.DefaultView;
-            dg.Columns[1].Visibility = Visibility.Visible;
-            dg.Columns[0].Visibility = Visibility.Hidden;
+            dg2.ItemsSource = dt.DefaultView;
+            dg2.Columns[1].Visibility = Visibility.Visible;
+            dg2.Columns[0].Visibility = Visibility.Hidden;
            
 
             con.Close();
@@ -286,6 +292,8 @@ namespace WpfApp2
         private void Button_spam(object sender, RoutedEventArgs e)
         {
             contmsg.Visibility = Visibility.Hidden;
+            dg1.Visibility = Visibility.Visible;
+            dg2.Visibility = Visibility.Collapsed;
 
             get_spam();
           
@@ -307,10 +315,10 @@ namespace WpfApp2
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable("Mails");
             da.Fill(dt);
-            dg.ItemsSource = dt.DefaultView;
+            dg1.ItemsSource = dt.DefaultView;
 
-            dg.Columns[0].Visibility = Visibility.Visible;
-            dg.Columns[1].Visibility = Visibility.Hidden;
+            dg1.Columns[0].Visibility = Visibility.Visible;
+            dg1.Columns[1].Visibility = Visibility.Hidden;
 
            
             con.Close();
@@ -329,8 +337,11 @@ namespace WpfApp2
 
         private void Button_Delete(object sender, RoutedEventArgs e)
         {
-
-            DataRowView row = dg.SelectedItem as DataRowView;
+            DataRowView row;
+            if (dg1.Visibility == Visibility.Visible)
+                 row = dg1.SelectedItem as DataRowView;
+            else
+                 row = dg2.SelectedItem as DataRowView;
 
             string msgnum = row.Row.ItemArray[5].ToString();
              int num = Convert.ToInt32(msgnum);
@@ -388,10 +399,10 @@ namespace WpfApp2
         }
         private void Button_cont(object sender, RoutedEventArgs e)
         {
-            if (dg.SelectedIndex != -1)
+            if (dg1.SelectedIndex != -1)
             {
 
-                DataRowView row = dg.SelectedItem as DataRowView;
+                DataRowView row = dg1.SelectedItem as DataRowView;
                 sendTo st = new sendTo(row.Row.ItemArray[3].ToString(), row.Row.ItemArray[1].ToString(), row.Row.ItemArray[4].ToString(), Convert.ToInt32(row.Row.ItemArray[5]));
                 st.Show();
             }
@@ -408,7 +419,7 @@ namespace WpfApp2
 
         private void Button_Reply(object sender, RoutedEventArgs e)
         {
-            DataRowView row = dg.SelectedItem as DataRowView;
+            DataRowView row = dg1.SelectedItem as DataRowView;
             sendTo st = new sendTo(str,row.Row.ItemArray[3].ToString());
             st.Show();
         }
