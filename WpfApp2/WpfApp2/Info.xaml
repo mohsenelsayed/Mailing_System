@@ -6,10 +6,11 @@
         xmlns:local="clr-namespace:WpfApp2"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Info"  Height="1050" Width="1400" >
+        Title="Info"  Height="1050" Width="1400"
+        Icon="images/logo.ico">
     <StackPanel>
-        <Button Style="{StaticResource MyButton}" Width="50" HorizontalAlignment="Left" Background="#8469f4" BorderThickness="0" Click="back_welcome">
-            <Image Source="images/back.png" />
+        <Button Style="{StaticResource MyButton}"  HorizontalAlignment="Left"  BorderThickness="0" Click="back_welcome" Height="94" Width="114">
+            <Image Source="images/newback.png" Height="87" />
         </Button>
         <DockPanel Width="700" Height="auto" Margin="0" >
             <materialDesign:Flipper
@@ -36,7 +37,7 @@
 
                         </materialDesign:ColorZone>
                         <Image  Name="im"
-          Source=""
+          
           Height="150"
           Width="150"
           VerticalAlignment="Center"
@@ -139,6 +140,7 @@
                                 <RowDefinition />
                                 <RowDefinition />
                                 <RowDefinition />
+                                <RowDefinition />
                             </Grid.RowDefinitions>
                             <DockPanel Margin="0 8 0 30"  >
                                 <TextBlock
@@ -157,13 +159,15 @@
           materialDesign:HintAssist.IsFloating="True"
           Margin="0 12 0 30" Name="newUserName">
 
-                            </TextBox>
-                            <PasswordBox
+                            </TextBox >
+                            <TextBox
                                 Grid.Row="2"
           materialDesign:HintAssist.Hint="Password"
           materialDesign:HintAssist.IsFloating="True"
-          Margin="0 12 0 30" Name="newPassword">
-                            </PasswordBox>
+          Margin="0 12 0 30" Name="newPassword"
+                                
+                             >
+                            </TextBox>
                             <TextBox
         Grid.Row="3"
           materialDesign:HintAssist.Hint="Age"
@@ -178,9 +182,9 @@
           Margin="0 12 0 30" Name="newPhone">
 
                             </TextBox>
-
+                            <TextBlock Name="Errors" Margin="0 10" Grid.Row="5" Foreground="Red" FontSize="20" Visibility="Collapsed"  ></TextBlock>
                             <Button
-                                Grid.Row="5"
+                                Grid.Row="6"
     Style="{StaticResource MaterialDesignRaisedDarkButton}"
     Width="100"
     ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
@@ -193,47 +197,5 @@
                 </materialDesign:Flipper.BackContent>
             </materialDesign:Flipper>
         </DockPanel>
-        <!--    <StackPanel Margin="50 50">
-            
-            <Border>
-                <StackPanel>
-                    <TextBlock FontSize="30" FontWeight="Bold" Text="Personal Info : "></TextBlock>
-                    <StackPanel Margin="75 0">
-                        <DockPanel>
-                            <TextBlock FontSize="20" FontWeight="Bold" Margin="15" Text="username : "></TextBlock>
-                       <Button Style="{StaticResource MyButton}" Click="Button_username" HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Margin="20 0">
-                                <Image Source="images/edit.jpg" Width="30" />
-                            </Button>
-                        </DockPanel>
-
-                        <DockPanel>
-
-                            <TextBlock FontSize="20" FontWeight="Bold" Margin="15" Text="password : "></TextBlock>
-                           
-                            <Button Style="{StaticResource MyButton}" Click="Button_password" HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Margin="20 0">
-                                <Image Source="images/edit.jpg" Width="30" />
-                            </Button>
-                        </DockPanel>
-                        <DockPanel>
-
-                            <TextBlock FontSize="20" FontWeight="Bold" Margin="15" Text="phone : "></TextBlock>
-                           
-                            <Button Style="{StaticResource MyButton}" Click="Button_phone" HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Margin="20 0">
-                                <Image Source="images/edit.jpg" Width="30" />
-                            </Button>
-                        </DockPanel>
-                        <DockPanel>
-                            <TextBlock FontSize="20" FontWeight="Bold" Margin="15" Text="age : "></TextBlock>
-                            
-                            <Button Style="{StaticResource MyButton}" Click="Button_age" HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Margin="20 0">
-                                <Image Source="images/edit.jpg" Width="30" />
-                            </Button>
-                        </DockPanel>
-
-                    </StackPanel>
-                </StackPanel>
-            </Border>
-        </StackPanel>
-    -->
     </StackPanel>
 </Window>

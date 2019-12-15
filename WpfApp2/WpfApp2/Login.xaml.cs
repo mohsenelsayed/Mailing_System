@@ -22,7 +22,7 @@ namespace WpfApp2
     /// </summary>
     public partial class Login : Page
     {
-        public string connec = "Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True";
+        public string connec = "Data Source=DESKTOP-I9CKISJ ;Initial Catalog=mailingsystem;Integrated Security=True";
         public Login()
         {
             InitializeComponent();
@@ -33,12 +33,16 @@ namespace WpfApp2
         {
             if (Emailwpf.Text == "")
             {
-                MessageBox.Show("you didnt input your email");
+                Errors.Visibility = Visibility.Visible;
+                Errors.Text = "You didn't input your email";
+               
                 return;
             }
             if (passwordwpf.Password == "")
             {
-                MessageBox.Show("you didnt input your password");
+                Errors.Visibility = Visibility.Visible;
+                Errors.Text = "You didn't input your password";
+         
                 return;
             }
 
@@ -72,9 +76,18 @@ namespace WpfApp2
                 int emailcount = Convert.ToInt32(checkemail.ExecuteScalar());
 
                 if (emailcount == 1)
-                    MessageBox.Show("Wrong Password Entered");
+                {
+                    Errors.Visibility = Visibility.Visible;
+                    Errors.Text = "Wrong Password Entered";
+                
+                }
+
                 else
-                    MessageBox.Show("This email doesnt exist");
+                {
+                    Errors.Visibility = Visibility.Visible;
+                    Errors.Text = "This email doesn't exist";
+               
+                }
             }
             con.Close();
 

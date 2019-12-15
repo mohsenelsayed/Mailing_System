@@ -71,6 +71,9 @@
                                 <PasswordBox Name="passwordwpf" Background="Transparent"  BorderThickness="0" Foreground="Black" ></PasswordBox>
                             </Border>
                         </StackPanel>
+                        
+                        <TextBlock Name="Errors" Foreground="Red" FontSize="20" Visibility="Collapsed"  ></TextBlock>
+                        
                         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0 70 0 20">
 
                             <Border Width="300" Height="50" BorderThickness="1" Background=" #8469f4" BorderBrush="#8469f4" CornerRadius="12,12,12,12" >

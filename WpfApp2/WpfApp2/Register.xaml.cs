@@ -24,7 +24,7 @@ namespace WpfApp2
     /// </summary>
     public partial class Register : Page
     {
-        public string connec = "Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True";
+        public string connec = "Data Source=DESKTOP-I9CKISJ ;Initial Catalog=mailingsystem;Integrated Security=True";
 
         public Register()
         {
@@ -42,29 +42,38 @@ namespace WpfApp2
 
             if (String.IsNullOrWhiteSpace(usernamewpf.Text))
             {
-                MessageBox.Show("your username cant be empty pls fill it ");
+                Errors.Visibility = Visibility.Visible;
+                Errors.Text = "You username can't be empty please fill it";
+          
                 return;
             }
             //end of username
             //phone
             if (String.IsNullOrWhiteSpace(phonewpf.Text))
             {
-                MessageBox.Show("your phone cant be empty pls fill it ");
+                Errors.Visibility = Visibility.Visible;
+                Errors.Text = "You phone can't be empty please fill it";
+            
                 return;
             }
 
             int z = 0;
             if (!int.TryParse(phonewpf.Text, out z))
             {
+                Errors.Visibility = Visibility.Visible;
+                Errors.Text = "Please enter a number in the phone box ";
 
-                MessageBox.Show("Pls enter a number in the phone box ");
+              
                 return;
             }
 
             if (phonewpf.Text.Length != 11)
             {
+                Errors.Visibility = Visibility.Visible;
+                Errors.Text = "Please  enter a correct number ";
 
-                MessageBox.Show("Pls enter a correct number ");
+
+                
                 return;
             }
 
@@ -72,12 +81,18 @@ namespace WpfApp2
             //email
             if (String.IsNullOrWhiteSpace(emailwpf.Text))
             {
-                MessageBox.Show("your email cant be empty pls fill it ");
+                Errors.Visibility = Visibility.Visible;
+                Errors.Text = "Your email can't be empty please fill it";
+
+               
                 return;
             }
             if (!regex.IsMatch(emailwpf.Text))
             {
-                MessageBox.Show("pls enter the right format of the email ");
+                Errors.Visibility = Visibility.Visible;
+                Errors.Text = "Please enter the right format of the email";
+
+          
                 return;
 
             }
@@ -94,7 +109,9 @@ namespace WpfApp2
 
             if (emailcount == 1)
             {
-                MessageBox.Show("This email already exist");
+                Errors.Visibility = Visibility.Visible;
+                Errors.Text = "This email already exist";
+               
                 return;
             }
 
@@ -102,13 +119,18 @@ namespace WpfApp2
             //password
             if (String.IsNullOrWhiteSpace(passwordwpf.Password))
             {
-                MessageBox.Show("your password cant be empty pls fill it");
+                Errors.Visibility = Visibility.Visible;
+                Errors.Text = "Your password can't be empty please fill it";
+
+               
                 return;
             }
             if (passwordwpf.Password.Length < 5)
             {
+                Errors.Visibility = Visibility.Visible;
+                Errors.Text = "Your password should be more than 5 characters or numbers";
 
-                MessageBox.Show("your password should be more than 5 characters or numbers");
+               
                 return;
             }
             //end of password
@@ -116,12 +138,18 @@ namespace WpfApp2
             //confirmpass
             if (String.IsNullOrWhiteSpace(confirmpasswpf.Password))
             {
-                MessageBox.Show("pls fill the confirmpassword box ");
+                Errors.Visibility = Visibility.Visible;
+                Errors.Text = "Please fill the confirm password box ";
+
+               
                 return;
             }
             if (confirmpasswpf.Password != passwordwpf.Password)
             {
-                MessageBox.Show("your passwords doesnt match ");
+                Errors.Visibility = Visibility.Visible;
+                Errors.Text = "Your password doesn't match ";
+
+              
                 return;
 
             }
@@ -130,20 +158,27 @@ namespace WpfApp2
 
             if (String.IsNullOrWhiteSpace(agewpf.Text))
             {
-                MessageBox.Show("pls fill the age box ");
+                Errors.Visibility = Visibility.Visible;
+                Errors.Text = "Please Fill the age box";
+                
                 return;
             }
             int x = 0;
             if (!int.TryParse(agewpf.Text, out x))
             {
+                Errors.Visibility = Visibility.Visible;
+                Errors.Text = "Please enter a number in the age box ";
 
-                MessageBox.Show("Pls enter a number in the age box ");
+               
                 return;
             }
             x = Convert.ToInt32(agewpf.Text);
             if (!(x >= 6 && x <= 100))
             {
-                MessageBox.Show("Pls enter a number between 6 and 100 in the age box ");
+                Errors.Visibility = Visibility.Visible;
+                Errors.Text = "Please enter a number between 6 and 100 in the age box";
+
+               
                 return;
             }
 
@@ -151,7 +186,10 @@ namespace WpfApp2
             //gender
             if (male.IsChecked == false && female.IsChecked == false)
             {
-                MessageBox.Show("pls choose your gender");
+                Errors.Visibility = Visibility.Visible;
+                Errors.Text = "Please choose your gender";
+
+               
                 return;
             }
             //end of gender
@@ -178,7 +216,7 @@ namespace WpfApp2
 
             cmd.ExecuteNonQuery();
             con.Close();
-            MessageBox.Show("New Data inserted");
+            
 
             Uri uri = new Uri("Login.xaml", UriKind.Relative);
             this.NavigationService.Navigate(uri);

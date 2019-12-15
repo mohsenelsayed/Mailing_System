@@ -19,13 +19,12 @@
         <ImageBrush ImageSource="images/interface.png"/>
 
     </Window.Background>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="4*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Button FontWeight="Bold" Background="White" Foreground="#8469f4" FontSize="30" Name="PerformTask" Content="Start" Click="PerformTask_Click" Margin="609,57,606,10.2" Width="145" Height="56" Grid.Row="1"/>
-        <ProgressBar Foreground="#8469f4" Visibility="Collapsed"  Name="MyProgressBar" HorizontalAlignment="Left" Margin="0,37.8,-560,0"  Height="20" VerticalAlignment="Top" Width="1920" Grid.Row="2"/>
+    <Grid VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 80">
+
+        <ProgressBar
+  IsIndeterminate="True"
+           Background="White"
+           
+            Width="900"/>
     </Grid>
 </Window>

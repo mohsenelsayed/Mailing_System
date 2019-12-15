@@ -23,7 +23,7 @@ namespace WpfApp2
     /// </summary>
     public partial class MailsHome : Window
     {
-        public string connec = "Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True";
+        public string connec = "Data Source=DESKTOP-I9CKISJ ;Initial Catalog=mailingsystem;Integrated Security=True";
 
         public string str;
         public string lastfun;
@@ -229,8 +229,8 @@ namespace WpfApp2
         private void Button_Sent(object sender, RoutedEventArgs e)
         {
             contmsg.Visibility = Visibility.Hidden;
-
-             get_sent();
+            
+            get_sent();
            
 
             SqlConnection con = new SqlConnection(connec);
@@ -259,7 +259,7 @@ namespace WpfApp2
         private void Button_draft(object sender, RoutedEventArgs e)
         {
             contmsg.Visibility = Visibility.Visible;
-
+            
             get_drafts();
            
 

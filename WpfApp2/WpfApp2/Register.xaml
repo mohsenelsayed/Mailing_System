@@ -117,6 +117,7 @@
                             <RadioButton Name="female">female</RadioButton>
                         </StackPanel>
 
+                        <TextBlock Name="Errors" Foreground="Red" FontSize="20" Visibility="Collapsed"  ></TextBlock>
 
                         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0 20">
 

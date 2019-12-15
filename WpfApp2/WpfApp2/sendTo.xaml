@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:WpfApp2"
 
         mc:Ignorable="d"
-        Title="New Massege" Height="400" Width="450">
+        Title="New Massege" Height="400" Width="450"
+        Icon="images/logo.ico">
 
     <StackPanel Margin="0 12">
         <GroupBox

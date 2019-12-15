@@ -27,7 +27,7 @@ namespace WpfApp2
     public partial class Info : Window
     {
         public bool check = false;
-        public string connec = "Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True";
+        public string connec = "Data Source=DESKTOP-I9CKISJ ;Initial Catalog=mailingsystem;Integrated Security=True";
         public string name;
         public OpenFileDialog dlg = new OpenFileDialog();
 
@@ -77,10 +77,10 @@ namespace WpfApp2
             foreach (char x in u.password.ToString())
             {
                 password.Text += '*';
+                newPassword.Text += '*';
             }
             age.Text = newAge.Text = (u.age).ToString();
             phone.Text = newPhone.Text = (u.phone).ToString();
-
 
 
             SqlCommand sc = new SqlCommand("select imgdata from Users where email=@email", con);
@@ -125,39 +125,52 @@ namespace WpfApp2
 
             if (String.IsNullOrWhiteSpace(newUserName.Text))
             {
-                MessageBox.Show("your username cant be empty pls fill it ");
+                Errors.Visibility = Visibility.Visible;
+                Errors.Text = "Your username can't be empty please fill it";
+
+               
                 return;
             }
             if (String.IsNullOrWhiteSpace(newPhone.Text))
             {
-                MessageBox.Show("your phone cant be empty pls fill it ");
+                Errors.Visibility = Visibility.Visible;
+                Errors.Text = "Your phone can't be empty please fill it";
+
+
+               
                 return;
             }
 
             int z = 0;
             if (!int.TryParse(newPhone.Text, out z))
             {
+                Errors.Visibility = Visibility.Visible;
+                Errors.Text = "Please enter a number in the phone box";
 
-                MessageBox.Show("Pls enter a number in the phone box ");
                 return;
             }
 
             if (newPhone.Text.Length != 11)
             {
+                Errors.Visibility = Visibility.Visible;
+                Errors.Text = "Please enter a correct number";
 
-                MessageBox.Show("Pls enter a correct number ");
+             
                 return;
             }
             if (String.IsNullOrWhiteSpace(newAge.Text))
             {
-                MessageBox.Show("pls fill the age box ");
+                 Errors.Visibility = Visibility.Visible;
+                Errors.Text = "Please fill the age box";
+
                 return;
             }
             int x = 0;
             if (!int.TryParse(newAge.Text, out x))
             {
-
-                MessageBox.Show("Pls enter a number in the age box ");
+                Errors.Visibility = Visibility.Visible;
+                Errors.Text = "Please enter a number in the age box";
+                
                 return;
             }
             x = Convert.ToInt32(newAge.Text);
@@ -165,14 +178,18 @@ namespace WpfApp2
 
             if (!(x >= 6 && x <= 100))
             {
-                MessageBox.Show("Pls enter a number between 6 and 100 in the age box ");
+                Errors.Visibility = Visibility.Visible;
+                Errors.Text = "Please enter a number between 6 and 100 in the age box";
+
+       
                 return;
             }
 
-            if (newPassword.Password.Length < 5 && !String.IsNullOrWhiteSpace(newPassword.Password))
+            if (newPassword.Text.Length < 5 && !String.IsNullOrWhiteSpace(newPassword.Text))
             {
+                Errors.Visibility = Visibility.Visible;
+                Errors.Text = "Your password should be more than 5 characters or numbers";
 
-                MessageBox.Show("your password should be more than 5 characters or numbers");
                 return;
             }
 
@@ -180,10 +197,13 @@ namespace WpfApp2
 
             u.name = newUserName.Text;
 
-            if (!String.IsNullOrWhiteSpace(newPassword.Password))
+            if (!String.IsNullOrWhiteSpace(newPassword.Text))
             {
-                u.password = newPassword.Password;
-
+                foreach (char y in u.password.ToString())
+                {
+                  
+                    newPassword.Text += '*';
+                }
             }
 
 
@@ -221,7 +241,7 @@ namespace WpfApp2
                 sc.ExecuteNonQuery();
             }
 
-            newPassword.Password = "";
+            newPassword.Text = u.password.ToString(); 
             con.Close();
             showUpdate();
         }
