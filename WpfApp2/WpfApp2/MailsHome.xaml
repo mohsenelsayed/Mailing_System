@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfApp2"
         xmlns:materialDesign="http://m...content-available-to-author-only...l.net/winfx/xaml/themes"
         xmlns:materialDesign1="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="MailsHome" Height="1050" Width="1400"
+        Title="OA3M" Height="1050" Width="1400"
         Icon="images/logo.ico">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -35,7 +35,7 @@
             <StackPanel
   Orientation="Horizontal">
                 <Expander
-    ExpandDirection="Left" Width="275">
+    ExpandDirection="Left" Width="275" IsExpanded="True">
                     <Expander.Header>
                         <TextBlock
  
@@ -75,7 +75,7 @@
                 <DataGridTextColumn Binding="{Binding username}" Header="From"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding username}" Header="To"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding Subject}" Header="Subject"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Msgdate}" Header="Date" Width="200"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Msgdate}" Header="Date" Width="200" SortDirection="Descending"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding FromEmail}" Header="FromEmail"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding ToEmail}" Header="ToEmail"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding Description}" Header="Description"></DataGridTextColumn>

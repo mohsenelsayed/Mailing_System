@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfApp2"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Info"  Height="1050" Width="1400"
+        Title="OA3M"  Height="1050" Width="1400"
         Icon="images/logo.ico">
     <StackPanel>
         <Button Style="{StaticResource MyButton}"  HorizontalAlignment="Left"  BorderThickness="0" Click="back_welcome" Height="94" Width="114">

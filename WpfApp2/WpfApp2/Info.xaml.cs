@@ -27,7 +27,7 @@ namespace WpfApp2
     public partial class Info : Window
     {
         public bool check = false;
-        public string connec = "Data Source=MEDHAT ;Initial Catalog=mailingsystem;Integrated Security=True";
+        public string connec = "Data Source=DESKTOP-I9CKISJ  ;Initial Catalog=mailingsystem;Integrated Security=True";
         public string name;
         public OpenFileDialog dlg = new OpenFileDialog();
 
@@ -185,7 +185,7 @@ namespace WpfApp2
                 return;
             }
 
-            if (newPassword.Text.Length < 5 && !String.IsNullOrWhiteSpace(newPassword.Text))
+            if (newPassword.Text.Length < 5)
             {
                 Errors.Visibility = Visibility.Visible;
                 Errors.Text = "Your password should be more than 5 characters or numbers";

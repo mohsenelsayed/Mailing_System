@@ -24,7 +24,7 @@
         <ProgressBar
   IsIndeterminate="True"
            Background="White"
-           
+           Height="8"
             Width="900"/>
     </Grid>
 </Window>
