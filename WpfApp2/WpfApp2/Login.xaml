@@ -77,7 +77,7 @@
                         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0 70 0 20">
 
                             <Border Width="300" Height="50" BorderThickness="1" Background=" #8469f4" BorderBrush="#8469f4" CornerRadius="12,12,12,12" >
-                                <Button  Style="{StaticResource MyButton}" FontWeight="Bold" Margin="10 0" Background=" #8469f4" Foreground="White" FontSize="30" Click="Button_Click">
+                                <Button IsDefault="True" Style="{StaticResource MyButton}" FontWeight="Bold" Margin="10 0" Background=" #8469f4" Foreground="White" FontSize="30" Click="Button_Click">
 
                                     Login
                                 </Button>

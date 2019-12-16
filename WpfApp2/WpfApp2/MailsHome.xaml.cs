@@ -23,7 +23,7 @@ namespace WpfApp2
     /// </summary>
     public partial class MailsHome : Window
     {
-        public string connec = "Data Source=DESKTOP-I9CKISJ  ;Initial Catalog=mailingsystem;Integrated Security=True";
+        public string connec = "Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True";
 
         public string str;
         public string lastfun;
@@ -253,7 +253,10 @@ namespace WpfApp2
             dg2.ItemsSource = dt.DefaultView;
             dg2.Columns[1].Visibility = Visibility.Visible;
             dg2.Columns[0].Visibility = Visibility.Hidden;
-          
+            dg2.Columns[4].Visibility = Visibility.Hidden;
+            dg2.Columns[5].Visibility = Visibility.Hidden;
+            dg2.Columns[6].Visibility = Visibility.Hidden;
+            dg2.Columns[7].Visibility = Visibility.Hidden;
 
             con.Close();
             lastfun = "sent";
@@ -282,7 +285,10 @@ namespace WpfApp2
             dg2.ItemsSource = dt.DefaultView;
             dg2.Columns[1].Visibility = Visibility.Visible;
             dg2.Columns[0].Visibility = Visibility.Hidden;
-           
+            dg2.Columns[4].Visibility = Visibility.Hidden;
+            dg2.Columns[5].Visibility = Visibility.Hidden;
+            dg2.Columns[6].Visibility = Visibility.Hidden;
+            dg2.Columns[7].Visibility = Visibility.Hidden;
 
             con.Close();
             lastfun = "draft";
@@ -399,12 +405,14 @@ namespace WpfApp2
         }
         private void Button_cont(object sender, RoutedEventArgs e)
         {
-            if (dg1.SelectedIndex != -1)
+            if (dg2.SelectedIndex != -1)
             {
 
-                DataRowView row = dg1.SelectedItem as DataRowView;
+                DataRowView row = dg2.SelectedItem as DataRowView;
                 sendTo st = new sendTo(row.Row.ItemArray[3].ToString(), row.Row.ItemArray[1].ToString(), row.Row.ItemArray[4].ToString(), Convert.ToInt32(row.Row.ItemArray[5]));
                 st.Show();
+                st.Closed += child_Closed;
+
             }
             else
                 MessageBox.Show("Pls Select a message");

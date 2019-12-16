@@ -27,7 +27,7 @@ namespace WpfApp2
     public partial class Info : Window
     {
         public bool check = false;
-        public string connec = "Data Source=DESKTOP-I9CKISJ  ;Initial Catalog=mailingsystem;Integrated Security=True";
+        public string connec = "Data Source=DESKTOP-ITEONSL\\RAY;Initial Catalog=mailingsystem;Integrated Security=True";
         public string name;
         public OpenFileDialog dlg = new OpenFileDialog();
 
