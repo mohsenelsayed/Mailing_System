@@ -199,11 +199,7 @@ namespace WpfApp2
 
             if (!String.IsNullOrWhiteSpace(newPassword.Text))
             {
-                foreach (char y in u.password.ToString())
-                {
-                  
-                    newPassword.Text += '*';
-                }
+                u.password = newPassword.Text;
             }
 
 
@@ -249,9 +245,11 @@ namespace WpfApp2
         {
             username.Text = newUserName.Text = (u.name).ToString();
             password.Text = "";
+            newPassword.Text = "";
             foreach (char x in u.password.ToString())
             {
                 password.Text += '*';
+                newPassword.Text += '*';
             }
 
             age.Text = newAge.Text = (u.age).ToString();
